@@ -51,6 +51,7 @@ namespace UI
 		{
 			InitializeBackgroundImage();
 			InitializeButtons();
+			RegisterButtonCallback();
 		}
 
 		void LevelSelectionUIController::InitializeBackgroundImage()
