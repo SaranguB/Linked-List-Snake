@@ -18,5 +18,8 @@ namespace Level
 		void Update();
 		void Render();
 
+		float GetCellWidth();
+		float CellHeight();
+
 	};
 }

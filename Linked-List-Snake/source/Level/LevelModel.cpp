@@ -10,8 +10,22 @@ namespace Level
 	{
 	}
 
-	void LevelModel::Initialize()
+	void LevelModel::Initialize(int width, int height)
 	{
+		CellWidth = width / numberOfColumns;
+		CellHeight = height / numberOfRows;
 	}
+
+	float LevelModel::GetCellWidth()
+	{
+		return CellWidth;
+	}
+
+	float LevelModel::GetCellHeight()
+	{
+		return CellHeight;
+	}
+
+	
 
 }
