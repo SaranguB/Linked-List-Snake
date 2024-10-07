@@ -26,6 +26,7 @@ namespace Player
 		~BodyPart();
 
 		void Initialize(float width, float height, sf::Vector2i position, Direction direction);
+		void Update();
 		void Render();
 
 	};

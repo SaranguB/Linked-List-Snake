@@ -41,6 +41,12 @@ namespace Player
 
 	}
 
+	void BodyPart::Update()
+	{
+		bodyPartImage->update();
+	}
+	 
+
 
 	void BodyPart::InitializeBodyPartImage()
 	{
