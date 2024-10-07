@@ -38,7 +38,7 @@ namespace Player
 
 	void PlayerService::SpawnPlayer()
 	{
-
+		snakeController->SpawnSnake();
 	}
 }
 
