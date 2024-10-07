@@ -25,6 +25,12 @@ namespace Player
 		float GetRotationAngle();
 
 		void UpdatePosition();
+
+		sf::Vector2i GetNextPositionUp();
+		sf::Vector2i GetNextPositionDown();
+		sf::Vector2i GetNextPositionLeft();
+		sf::Vector2i GetNextPositionRight();
+
 	public:
 		BodyPart();
 		~BodyPart();
@@ -33,7 +39,12 @@ namespace Player
 		void Update();
 		void Render();
 
+		Direction GetDirection();
 		void SetDirection(Direction direction);
+
+		sf::Vector2i GetNextPosition();
+		void  SetPosition(sf::Vector2i position);
+		sf::Vector2i GetPosition();
 
 	};
 }

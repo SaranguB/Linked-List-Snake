@@ -91,15 +91,77 @@ namespace Player
 		bodyPartImage->update();
 	}
 
+
+
 	void BodyPart::Render()
 	{
 		bodyPartImage->render();
 	}
 
+	Direction BodyPart::GetDirection()
+	{
+		return direction;
+	}
+
 	void BodyPart::SetDirection(Direction direction)
 	{
-		this->direction = direction;	
+		this->direction = direction;
 	}
+
+	sf::Vector2i BodyPart::GetNextPosition()
+	{
+		switch (direction)
+		{
+		case Direction::UP:
+			return GetNextPositionUp();
+
+		case Direction::DOWN:
+			return GetNextPositionDown();
+
+		case Direction::LEFT:
+			return GetNextPositionLeft();
+
+		case Direction::RIGHT:
+			return GetNextPositionRight();
+		default:
+			return gridPosition;
+		}
+	}
+
+	void BodyPart::SetPosition(sf::Vector2i position)
+	{
+		gridPosition = position;	
+	}
+
+	sf::Vector2i BodyPart::GetPosition()
+	{
+		return gridPosition;
+	}
+
+
+	sf::Vector2i BodyPart::GetNextPositionUp()
+	{
+		return sf::Vector2i(gridPosition.x, gridPosition.y - 1);
+
+	}
+
+	sf::Vector2i BodyPart::GetNextPositionDown()
+	{
+		return sf::Vector2i(gridPosition.x, gridPosition.y + 1);
+	}
+
+	sf::Vector2i BodyPart::GetNextPositionLeft()
+	{
+		return sf::Vector2i(gridPosition.x - 1, gridPosition.y);
+
+	}
+
+	sf::Vector2i BodyPart::GetNextPositionRight()
+	{
+		return sf::Vector2i(gridPosition.x + 1, gridPosition.y);
+	}
+
+
 
 
 }
