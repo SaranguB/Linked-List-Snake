@@ -32,6 +32,30 @@ namespace LinkedList
 		}
 	}
 
+	void SingleLinkedList::UpdateNodeDirection(Player::Direction directionToSet)
+	{
+		Node* currentNode = headNode;
+
+		while (currentNode != nullptr)
+		{
+			Direction previousDirection = currentNode->bodyPart.GetDirection();
+			currentNode->bodyPart.SetDirection(directionToSet);
+			directionToSet = previousDirection;
+			currentNode = currentNode->next;
+		}
+	}
+
+	void SingleLinkedList::UpdateNodePosition()
+	{
+		Node* currentNode = headNode;
+
+		while (currentNode != nullptr)
+		{
+			currentNode->bodyPart.UpdatePosition();
+			currentNode = currentNode->next;
+		}
+	}
+
 
 	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode)
 	{

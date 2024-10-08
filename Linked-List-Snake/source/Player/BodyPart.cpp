@@ -1,6 +1,7 @@
 #include "../../Include/Player/BodyPart.h"
 #include "../../Include/Global/Config.h"
 #include "../../Include/Level/LevelView.h"
+#include "../../Include/Level/LevelModel.h"
 
 namespace Player
 {
@@ -86,9 +87,13 @@ namespace Player
 
 	void BodyPart::UpdatePosition()
 	{
+		gridPosition = GetNextPosition();
+
 		bodyPartImage->setPosition(GetBodyPartScreenPosition());
 		bodyPartImage->setRotation(GetRotationAngle());
 		bodyPartImage->update();
+
+		
 	}
 
 

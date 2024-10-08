@@ -24,7 +24,6 @@ namespace Player
 
 		float GetRotationAngle();
 
-		void UpdatePosition();
 
 		sf::Vector2i GetNextPositionUp();
 		sf::Vector2i GetNextPositionDown();
@@ -45,6 +44,8 @@ namespace Player
 		sf::Vector2i GetNextPosition();
 		void  SetPosition(sf::Vector2i position);
 		sf::Vector2i GetPosition();
+		void UpdatePosition();
+
 
 
 	};
