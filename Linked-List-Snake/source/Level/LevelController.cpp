@@ -36,7 +36,8 @@ namespace Level
 	{
 		return levelModel->GetCellWidth();
 	}
-	float LevelController::CellHeight()
+	
+	float LevelController::GetCellHeight()
 	{
 		return levelModel->GetCellHeight();
 	}

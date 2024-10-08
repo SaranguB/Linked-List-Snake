@@ -35,6 +35,16 @@ namespace Level
 		SpawnPlayer();
 	}
 
+	float LevelService::GetCellWidth()
+	{
+		return levelController->GetCellWidth();
+	}
+
+	float LevelService::GetCellHeight()
+	{
+		return levelController->GetCellHeight();
+	}
+
 	void LevelService::SpawnPlayer()
 	{
 		ServiceLocator::getInstance()->GetPlayerService()->SpawnPlayer();

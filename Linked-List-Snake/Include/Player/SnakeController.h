@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
+#include"../LinkedList/SingleLinkedList.h"
 
 
 namespace Player
@@ -14,6 +15,8 @@ namespace Player
 	class SnakeController
 	{
 	private:
+		LinkedList::SingleLinkedList* singleLinkedList;
+		void CreateLinkedList();
 
 		const int initialSnakeLength = 10;
 		SnakeState currenSnakeState;

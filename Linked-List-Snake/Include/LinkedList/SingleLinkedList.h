@@ -23,6 +23,8 @@ namespace LinkedList
 		void Initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void Render();
 
+		void CreateHeadNode();
+
 
 		
 	};
