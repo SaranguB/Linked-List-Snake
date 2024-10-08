@@ -3,7 +3,7 @@
 namespace LinkedList
 {
 
-
+	using namespace Player;
 	LinkedList::SingleLinkedList::SingleLinkedList()
 	{
 		headNode = nullptr;
@@ -23,21 +23,73 @@ namespace LinkedList
 
 	void SingleLinkedList::Render()
 	{
-		headNode->bodyPart.Render();
+		Node* currentNode = headNode;
+
+		while (currentNode != nullptr)
+		{
+			currentNode->bodyPart.Render();
+			currentNode = currentNode->next;
+		}
 	}
 
-	void SingleLinkedList::CreateHeadNode()
+
+	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode)
 	{
-		headNode = CreateNode();
-		headNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
-		return;
+
+		Direction referenceDirection = referenceNode->bodyPart.GetDirection();
+		sf::Vector2i referencePosition = referenceNode->bodyPart.GetPosition();
+
+		switch (referenceDirection)
+		{
+		case Direction::UP:
+			return sf::Vector2i(referencePosition.x, referencePosition.y - 1);
+			break;
+
+		case Direction::DOWN:
+			return sf::Vector2i(referencePosition.x, referencePosition.y + 1);
+			break;
+
+		case Direction::LEFT:
+			return sf::Vector2i(referencePosition.x - 1, referencePosition.y);
+			break;
+
+		case Direction::RIGHT:
+			return sf::Vector2i(referencePosition.x + 1, referencePosition.y);
+			break;
+		}
+
+		return defaultPosition;
+	}
+
+	void SingleLinkedList::InsertNodeAtTail()
+	{
+		Node* newNode = CreateNode();
+		Node* currentNode = headNode;
+
+		if (currentNode == nullptr)
+		{
+			headNode = newNode;
+			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
+			return;
+		}
+
+		while (currentNode->next != nullptr)
+		{
+			currentNode = currentNode->next;
+		}
+
+		currentNode->next = newNode;
+		newNode->bodyPart.Initialize(nodeWidth, nodeHeight,
+			GetNewNodePosition(currentNode), currentNode->bodyPart.GetDirection());
+
+
 	}
 
 	Node* SingleLinkedList::CreateNode()
 	{
 		return new Node;
 	}
-	
+
 }
 
 

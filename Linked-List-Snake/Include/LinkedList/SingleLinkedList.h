@@ -25,7 +25,7 @@ namespace LinkedList
 
 		void CreateHeadNode();
 
-
-		
+		sf::Vector2i GetNewNodePosition(Node* referenceNode);
+		void InsertNodeAtTail();
 	};
 }
