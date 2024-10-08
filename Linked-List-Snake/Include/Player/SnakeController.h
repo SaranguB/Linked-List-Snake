@@ -35,6 +35,9 @@ namespace Player
 		void Reset();
 		void RespawnSnake();
 
+		const float movementFrameDuration = 0.1f;
+		float elapsedDuration;
+
 	public:
 		SnakeController();
 		~SnakeController();
@@ -42,7 +45,7 @@ namespace Player
 		void Initialize();
 		void Update();
 		void Render();
-
+		void DelayedUpdate();
 		void SpawnSnake();
 
 		void SetSnakeState(SnakeState state);

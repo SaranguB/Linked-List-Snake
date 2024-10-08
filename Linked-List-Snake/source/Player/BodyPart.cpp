@@ -44,12 +44,6 @@ namespace Player
 
 	}
 
-	void BodyPart::Update()
-	{
-		UpdatePosition();
-	}
-
-
 
 	void BodyPart::InitializeBodyPartImage()
 	{
@@ -93,7 +87,6 @@ namespace Player
 		bodyPartImage->setRotation(GetRotationAngle());
 		bodyPartImage->update();
 
-		
 	}
 
 
@@ -127,7 +120,9 @@ namespace Player
 			return GetNextPositionLeft();
 
 		case Direction::RIGHT:
+			//printf("right");
 			return GetNextPositionRight();
+
 		default:
 			return gridPosition;
 		}

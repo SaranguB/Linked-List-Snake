@@ -12,6 +12,8 @@ namespace Player
 	{
 		singleLinkedList = nullptr;
 		CreateLinkedList();
+		currentSnakeDirection = defaultDirection;
+
 	}
 
 	void SnakeController::CreateLinkedList()
@@ -39,9 +41,7 @@ namespace Player
 		{
 		case SnakeState::ALIVE:
 			ProcessPlayerInput();
-			UpdateSnakeDirection();
-			ProcessSnakeCollision();
-			MoveSnake();
+			DelayedUpdate();
 
 			break;
 
@@ -56,6 +56,19 @@ namespace Player
 	void SnakeController::Render()
 	{
 		singleLinkedList->Render();
+	}
+
+	void SnakeController::DelayedUpdate()
+	{
+		elapsedDuration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (elapsedDuration >= movementFrameDuration)
+		{
+			elapsedDuration = 0;
+			UpdateSnakeDirection();
+			ProcessSnakeCollision();
+			MoveSnake();
+		}
 	}
 
 	void SnakeController::SpawnSnake()
@@ -107,6 +120,7 @@ namespace Player
 	}
 	void SnakeController::Reset()
 	{
+
 	}
 	void SnakeController::RespawnSnake()
 	{
