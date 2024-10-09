@@ -12,6 +12,12 @@ namespace Player
 		DEAD,
 	};
 
+	enum class InputState
+	{
+		WAITING,
+		PROCESSING
+	};
+
 	class SnakeController
 	{
 	private:
@@ -22,6 +28,8 @@ namespace Player
 		SnakeState currenSnakeState;
 		const float restartDuration = 2.f;
 		float restartCounter;
+
+		InputState inputState;
 
 		const sf::Vector2i defaultPosition = sf::Vector2i(25, 13);
 
