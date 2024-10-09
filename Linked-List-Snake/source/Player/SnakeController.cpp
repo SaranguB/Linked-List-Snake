@@ -32,6 +32,7 @@ namespace Player
 		float height = ServiceLocator::getInstance()->GetlevelService()->GetCellWidth();
 
 		singleLinkedList->Initialize(width, height, defaultPosition, defaultDirection);
+		Reset();
 	}
 
 	void SnakeController::Update()
@@ -120,18 +121,31 @@ namespace Player
 		if (singleLinkedList->ProcessNodeCollission())
 		{
 			currenSnakeState = SnakeState::DEAD;
-			singleLinkedList->RemoveAllNodes();
 		}
 	}
+
 	void SnakeController::HandleRestart()
 	{
+		restartCounter += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (restartCounter >= restartDuration)
+		{
+			RespawnSnake();
+		}
 	}
+
 	void SnakeController::Reset()
 	{
-
+		currenSnakeState = SnakeState::ALIVE;
+		currentSnakeDirection = defaultDirection;
+		elapsedDuration = 0;
+		restartCounter = 0;
 	}
 	void SnakeController::RespawnSnake()
 	{
+		singleLinkedList->RemoveAllNodes();
+		Reset();
+		SpawnSnake();
 	}
 
 

@@ -20,7 +20,8 @@ namespace Player
 
 		const int initialSnakeLength = 10;
 		SnakeState currenSnakeState;
-
+		const float restartDuration = 2.f;
+		float restartCounter;
 
 		const sf::Vector2i defaultPosition = sf::Vector2i(25, 13);
 
@@ -33,11 +34,13 @@ namespace Player
 		void MoveSnake();
 		void ProcessSnakeCollision();
 		void HandleRestart();
-		void Reset();
+		
 		void RespawnSnake();
+		void Reset();
 
 		const float movementFrameDuration = 0.1f;
 		float elapsedDuration;
+
 
 	public:
 		SnakeController();
