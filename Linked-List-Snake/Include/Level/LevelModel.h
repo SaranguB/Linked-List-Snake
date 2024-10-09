@@ -19,7 +19,7 @@ namespace Level
 		void Initialize(int width, int height);
 
 		static const int numberOfRows = 28;
-		static const int numberOfColumns = 50;
+		static const int numberOfColumns = 53;
 
 		float GetCellWidth();
 		float GetCellHeight();

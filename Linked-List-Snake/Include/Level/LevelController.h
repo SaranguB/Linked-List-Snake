@@ -19,7 +19,7 @@ namespace Level
 		void Render();
 
 		float GetCellWidth();
-		float CellHeight();
+		float GetCellHeight();
 
 	};
 }
