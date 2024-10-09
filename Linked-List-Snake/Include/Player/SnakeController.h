@@ -25,6 +25,7 @@ namespace Player
 		const sf::Vector2i defaultPosition = sf::Vector2i(25, 13);
 
 		const Direction defaultDirection = Direction::RIGHT;
+
 		Direction currentSnakeDirection;
 
 		void ProcessPlayerInput();

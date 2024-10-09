@@ -101,9 +101,9 @@ namespace Player
 		return direction;
 	}
 
-	void BodyPart::SetDirection(Direction direction)
+	void BodyPart::SetDirection(Direction newDirection)
 	{
-		this->direction = direction;
+		direction = newDirection;
 	}
 
 	sf::Vector2i BodyPart::GetNextPosition()
@@ -130,7 +130,7 @@ namespace Player
 
 	void BodyPart::SetPosition(sf::Vector2i position)
 	{
-		gridPosition = position;	
+		gridPosition = position;
 	}
 
 	sf::Vector2i BodyPart::GetPosition()
@@ -141,24 +141,25 @@ namespace Player
 
 	sf::Vector2i BodyPart::GetNextPositionUp()
 	{
-		return sf::Vector2i(gridPosition.x, gridPosition.y - 1);
+		return sf::Vector2i(gridPosition.x, (gridPosition.y - 1 + (LevelModel::numberOfRows)) % (LevelModel::numberOfRows));
 
 	}
 
 	sf::Vector2i BodyPart::GetNextPositionDown()
 	{
-		return sf::Vector2i(gridPosition.x, gridPosition.y + 1);
+		return sf::Vector2i(gridPosition.x, (gridPosition.y + 1) % (LevelModel::numberOfRows));
 	}
 
 	sf::Vector2i BodyPart::GetNextPositionLeft()
 	{
-		return sf::Vector2i(gridPosition.x - 1, gridPosition.y);
+		return sf::Vector2i((gridPosition.x - 1 + LevelModel::numberOfColumns) % (LevelModel::numberOfColumns)
+			, gridPosition.y);
 
 	}
 
 	sf::Vector2i BodyPart::GetNextPositionRight()
 	{
-		return sf::Vector2i(gridPosition.x + 1, gridPosition.y);
+		return sf::Vector2i((gridPosition.x + 1) % (LevelModel::numberOfColumns), gridPosition.y);
 	}
 
 

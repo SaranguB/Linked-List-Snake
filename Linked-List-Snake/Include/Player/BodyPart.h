@@ -40,7 +40,7 @@ namespace Player
 		void Render();
 
 		Direction GetDirection();
-		void SetDirection(Direction direction);
+		void SetDirection(Direction newDirection);
 
 		sf::Vector2i GetNextPosition();
 		void  SetPosition(sf::Vector2i position);

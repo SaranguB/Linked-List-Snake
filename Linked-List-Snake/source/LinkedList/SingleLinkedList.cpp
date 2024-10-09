@@ -1,4 +1,5 @@
 #include "../../Include/LinkedList/SingleLinkedList.h"
+#include <iostream>
 
 namespace LinkedList
 {
@@ -30,6 +31,7 @@ namespace LinkedList
 			currentNode->bodyPart.Render();
 			currentNode = currentNode->next;
 		}
+		
 	}
 
 	void SingleLinkedList::UpdateNodeDirection(Player::Direction directionToSet)
@@ -39,6 +41,7 @@ namespace LinkedList
 		while (currentNode != nullptr)
 		{
 			Direction previousDirection = currentNode->bodyPart.GetDirection();
+			
 			currentNode->bodyPart.SetDirection(directionToSet);
 			directionToSet = previousDirection;
 			currentNode = currentNode->next;
@@ -54,6 +57,7 @@ namespace LinkedList
 			currentNode->bodyPart.UpdatePosition();
 			currentNode = currentNode->next;
 		}
+
 	}
 
 
@@ -74,11 +78,11 @@ namespace LinkedList
 			break;
 
 		case Direction::LEFT:
-			return sf::Vector2i(referencePosition.x - 1, referencePosition.y);
+			return sf::Vector2i(referencePosition.x + 1, referencePosition.y);
 			break;
 
 		case Direction::RIGHT:
-			return sf::Vector2i(referencePosition.x + 1, referencePosition.y);
+			return sf::Vector2i(referencePosition.x - 1, referencePosition.y);
 			break;
 		}
 
@@ -94,6 +98,7 @@ namespace LinkedList
 		{
 			headNode = newNode;
 			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
+			//std::cout << "Inserted head node at position: " << defaultPosition.x << ", " << defaultPosition.y << std::endl;
 			return;
 		}
 
@@ -106,12 +111,14 @@ namespace LinkedList
 		newNode->bodyPart.Initialize(nodeWidth, nodeHeight,
 			GetNewNodePosition(currentNode), currentNode->bodyPart.GetDirection());
 
-
+		//std::cout << "Inserted new node at position: " << newNode->bodyPart.GetPosition().x << ", " << newNode->bodyPart.GetPosition().y << std::endl;
+	
+		
 	}
 
 	Node* SingleLinkedList::CreateNode()
 	{
-		return new Node;
+		return new Node();
 	}
 
 }
