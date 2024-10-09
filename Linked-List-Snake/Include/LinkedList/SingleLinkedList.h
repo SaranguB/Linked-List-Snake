@@ -15,6 +15,7 @@ namespace LinkedList
 		Player::Direction defaultDirection;
 
 		Node* CreateNode();
+		void RemoveNodeAtHead();
 
 	public:
 		SingleLinkedList();
@@ -28,6 +29,8 @@ namespace LinkedList
 
 		sf::Vector2i GetNewNodePosition(Node* referenceNode);
 		void InsertNodeAtTail();
+		void RemoveAllNodes();
 		bool ProcessNodeCollission();
+
 	};
 }

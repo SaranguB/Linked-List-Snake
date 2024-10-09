@@ -120,6 +120,7 @@ namespace Player
 		if (singleLinkedList->ProcessNodeCollission())
 		{
 			currenSnakeState = SnakeState::DEAD;
+			singleLinkedList->RemoveAllNodes();
 		}
 	}
 	void SnakeController::HandleRestart()

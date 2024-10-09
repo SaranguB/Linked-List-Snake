@@ -116,6 +116,26 @@ namespace LinkedList
 
 	}
 
+	void SingleLinkedList::RemoveAllNodes()
+	{
+		if (headNode == nullptr)return;
+		while (headNode != nullptr)
+		{
+			RemoveNodeAtHead();
+		}
+	}
+
+	void SingleLinkedList::RemoveNodeAtHead()
+	{
+		Node* currentNode = headNode;
+		headNode = headNode->next;
+
+		currentNode->next = nullptr;
+		delete currentNode;
+	}
+
+	
+
 	bool SingleLinkedList::ProcessNodeCollission()
 	{
 		if (headNode == nullptr)return false;
