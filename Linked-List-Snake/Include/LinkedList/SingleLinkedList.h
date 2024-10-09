@@ -28,5 +28,6 @@ namespace LinkedList
 
 		sf::Vector2i GetNewNodePosition(Node* referenceNode);
 		void InsertNodeAtTail();
+		bool ProcessNodeCollission();
 	};
 }

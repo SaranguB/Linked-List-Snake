@@ -31,7 +31,7 @@ namespace LinkedList
 			currentNode->bodyPart.Render();
 			currentNode = currentNode->next;
 		}
-		
+
 	}
 
 	void SingleLinkedList::UpdateNodeDirection(Player::Direction directionToSet)
@@ -41,7 +41,7 @@ namespace LinkedList
 		while (currentNode != nullptr)
 		{
 			Direction previousDirection = currentNode->bodyPart.GetDirection();
-			
+
 			currentNode->bodyPart.SetDirection(directionToSet);
 			directionToSet = previousDirection;
 			currentNode = currentNode->next;
@@ -112,12 +112,32 @@ namespace LinkedList
 			GetNewNodePosition(currentNode), currentNode->bodyPart.GetDirection());
 
 		//std::cout << "Inserted new node at position: " << newNode->bodyPart.GetPosition().x << ", " << newNode->bodyPart.GetPosition().y << std::endl;
-	
-		
+
+
+	}
+
+	bool SingleLinkedList::ProcessNodeCollission()
+	{
+		if (headNode == nullptr)return false;
+
+		sf::Vector2i predictedPosition = headNode->bodyPart.GetNextPosition();
+
+		Node* currentNode = headNode->next;
+
+		while (currentNode != nullptr)
+		{
+			if (currentNode->bodyPart.GetNextPosition() == predictedPosition)return true;
+			currentNode = currentNode->next;
+
+		}
+
+		return false;
 	}
 
 	Node* SingleLinkedList::CreateNode()
 	{
+
+
 		return new Node();
 	}
 
