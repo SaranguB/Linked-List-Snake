@@ -2,6 +2,8 @@
 
 namespace Level
 {
+	using namespace Element;
+
 	LevelModel::LevelModel()
 	{
 	}
@@ -14,6 +16,14 @@ namespace Level
 	{
 		CellWidth = width / numberOfColumns;
 		CellHeight = height / numberOfRows;
+
+		InitializeLevelData();
+	}
+
+	void LevelModel::InitializeLevelData()
+	{
+		levelConfiguration.push_back(LevelData(LevelNumber::ONE, &levelOneElementList));
+		levelConfiguration.push_back(LevelData(LevelNumber::TWO, &levelTwoElementList));
 	}
 
 	float LevelModel::GetCellWidth()
@@ -26,6 +36,11 @@ namespace Level
 		return CellHeight;
 	}
 
-	
+	const std::vector<Element::ElementData>& LevelModel::GetElementDataList(int levelToLoad)
+	{
+		return *levelConfiguration[levelToLoad].elementDataList;
+	}
+
+
 
 }

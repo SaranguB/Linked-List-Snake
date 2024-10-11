@@ -1,4 +1,5 @@
 #pragma once
+#include "Level/LevelModel.h"
 
 namespace Level
 {
@@ -19,7 +20,10 @@ namespace Level
 		void Render();
 
 		float GetCellWidth();
-		float CellHeight();
+		float GetCellHeight();
+
+		const std::vector<Element::ElementData>& GetElementDataList(int levelToLoad);
+
 
 	};
 }

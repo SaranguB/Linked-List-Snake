@@ -9,6 +9,8 @@ namespace Level
 		LevelController* levelController;
 		LevelNumber currentLevel;
 
+		void SpawnPlayer();
+
 	public:
 		LevelService();
 		~LevelService();
@@ -18,6 +20,11 @@ namespace Level
 		void Render();
 
 		void CreateLevel(LevelNumber levelToLoad);
+
+		float GetCellWidth();
+		float GetCellHeight();
+
+		void SpawnLevelElements(LevelNumber levelToLoad);
 
 
 	};
