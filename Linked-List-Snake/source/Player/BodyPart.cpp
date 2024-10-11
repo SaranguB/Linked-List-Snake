@@ -152,8 +152,8 @@ namespace Player
 
 	sf::Vector2i BodyPart::GetNextPositionLeft()
 	{
-		return sf::Vector2i((gridPosition.x - 1 + LevelModel::numberOfColumns) % (LevelModel::numberOfColumns)
-			, gridPosition.y);
+		return sf::Vector2i((gridPosition.x - 1 + LevelModel::numberOfColumns) % 
+			(LevelModel::numberOfColumns), gridPosition.y);
 
 	}
 
@@ -162,7 +162,6 @@ namespace Player
 		return sf::Vector2i((gridPosition.x + 1) % (LevelModel::numberOfColumns), gridPosition.y);
 	}
 
-
-
+	
 
 }

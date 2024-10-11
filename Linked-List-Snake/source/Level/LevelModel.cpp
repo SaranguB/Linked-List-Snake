@@ -14,8 +14,8 @@ namespace Level
 
 	void LevelModel::Initialize(int width, int height)
 	{
-		CellWidth = width / numberOfColumns;
-		CellHeight = height / numberOfRows;
+		CellWidth = static_cast<float>(width) / static_cast<float>(numberOfColumns);
+		CellHeight = static_cast<float>(height) / static_cast<float>(numberOfRows);
 
 		InitializeLevelData();
 	}

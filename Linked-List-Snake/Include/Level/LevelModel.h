@@ -24,11 +24,11 @@ Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(1, 2)),
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(1, 3)),
 
 //TOP-RIGHT
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 1)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 2)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 3)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(51, 1)),
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 1)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 2)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 3)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(49, 1)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(48, 1)),
 
 //BOTTOM-LEFT
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(1, 26)),
@@ -38,11 +38,11 @@ Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(2, 26)),
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(3, 26)),
 
 //BOTTOM-RIGHT
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 26)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 25)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(52, 24)),
-Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(51, 26)),
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 26)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 25)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(50, 24)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(49, 26)),
+Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(48, 26)),
 
 //CENTER-TOP-BAR
 Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(21, 11)),
@@ -80,7 +80,7 @@ Element::ElementData(Element::ElementType::OBSTACLE, sf::Vector2i(29, 15)),
 		void Initialize(int width, int height);
 
 		static const int numberOfRows = 28;
-		static const int numberOfColumns = 53;
+		static const int numberOfColumns = 52;
 
 		float GetCellWidth();
 		float GetCellHeight();
