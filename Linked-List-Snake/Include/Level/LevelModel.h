@@ -9,9 +9,14 @@ namespace Level
 	private:
 		std::vector<LevelData> levelConfiguration;
 
+		std::vector<Element::ElementData> levelOneElementList;
+		std::vector<Element::ElementData> levelTwoElementList;
+		std::vector<LevelData> levelConfiguration;
+
 		float CellWidth;
 		float CellHeight;
 
+		void InitializeLevelData();
 	public:
 		LevelModel();
 		~LevelModel();
@@ -23,5 +28,7 @@ namespace Level
 
 		float GetCellWidth();
 		float GetCellHeight();
+
+		const std::vector<Element::ElementData>& GetElementDataList(int levelToLoad);
 	};
 }

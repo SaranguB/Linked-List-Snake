@@ -24,6 +24,8 @@ namespace Level
 		float GetCellWidth();
 		float GetCellHeight();
 
+		void SpawnLevelElements(LevelNumber levelToLoad);
+
 
 	};
 }

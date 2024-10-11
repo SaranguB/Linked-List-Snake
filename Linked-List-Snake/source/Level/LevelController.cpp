@@ -4,6 +4,8 @@
 
 namespace Level
 {
+	using namespace Element;
+
 	LevelController::LevelController()
 	{
 		levelModel = new LevelModel();
@@ -36,9 +38,13 @@ namespace Level
 	{
 		return levelModel->GetCellWidth();
 	}
-	
+
 	float LevelController::GetCellHeight()
 	{
 		return levelModel->GetCellHeight();
+	}
+	const std::vector<ElementData>& LevelController::GetElementDataList(int levelToLoad)
+	{
+		return levelModel->GetElementDataList(levelToLoad);
 	}
 }
