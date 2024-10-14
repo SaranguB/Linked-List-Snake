@@ -90,14 +90,14 @@ namespace LinkedList
 
 	void SingleLinkedList::InsertNodeAtTail()
 	{
+		linkedListSize++;
 		Node* newNode = CreateNode();
 		Node* currentNode = headNode;
 
 		if (currentNode == nullptr)
 		{
 			headNode = newNode;
-			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
-			//std::cout << "Inserted head node at position: " << defaultPosition.x << ", " << defaultPosition.y << std::endl;
+			InitializeNode(newNode, nullptr, Operation::TAIL);
 			return;
 		}
 
@@ -107,8 +107,7 @@ namespace LinkedList
 		}
 
 		currentNode->next = newNode;
-		newNode->bodyPart.Initialize(nodeWidth, nodeHeight,
-			GetNewNodePosition(currentNode, Operation::TAIL), currentNode->bodyPart.GetDirection());
+		InitializeNode(newNode, currentNode, Operation::TAIL);
 
 		//std::cout << "Inserted new node at position: " << newNode->bodyPart.GetPosition().x << ", " << newNode->bodyPart.GetPosition().y << std::endl;
 
