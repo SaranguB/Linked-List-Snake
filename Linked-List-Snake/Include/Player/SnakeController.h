@@ -3,6 +3,7 @@
 #include "Direction.h"
 #include"../LinkedList/SingleLinkedList.h"
 #include <vector>
+#include "../../Include/Food/FoodService.h"
 
 namespace Player
 {
@@ -54,6 +55,7 @@ namespace Player
 		void ProcessBodyCollision();
 		void ProcessElementsCollision();
 		void ProcessFoodCollision();
+		void OnFoodCollelcted(Food::FoodType foodType);
 
 	public:
 		SnakeController();

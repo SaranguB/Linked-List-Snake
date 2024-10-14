@@ -170,6 +170,11 @@ namespace LinkedList
 		return nodesPositionList;
 	}
 
+	Node* SingleLinkedList::GetHeadNode()
+	{
+		return headNode;
+	}
+
 	Node* SingleLinkedList::CreateNode()
 	{
 

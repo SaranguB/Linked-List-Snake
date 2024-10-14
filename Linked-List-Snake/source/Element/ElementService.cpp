@@ -52,6 +52,9 @@ namespace Element
 		}
 		return elementPositionList;
 	}
+
+	
+
 	void ElementService::spawnObstacle(sf::Vector2i position, float cellWidth, float cellHeight)
 	{
 		Obstacle* obstacle = new Obstacle();
@@ -59,6 +62,22 @@ namespace Element
 		obstacle->Initialize(position, cellWidth, cellHeight);
 		obstacleList.push_back(obstacle);
 	}
+
+	bool ElementService::ProcessElementCollision(LinkedList::Node* headNode)
+	{
+
+		for (int i = 0;i < obstacleList.size();i++)
+		{
+			if (obstacleList[i]->GetObstaclePosition() == headNode->bodyPart.GetNextPosition()
+				|| obstacleList[i]->GetObstaclePosition() == headNode->bodyPart.GetPosition())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
 
 	
 }
