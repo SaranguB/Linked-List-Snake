@@ -3,6 +3,13 @@
 #include "../../Include/Player/Direction.h"
 namespace LinkedList
 {
+	enum class Operation
+	{
+		HEAD,
+		MID,
+		TAIL,
+	};
+
 	class SingleLinkedList
 	{
 	private:
@@ -17,6 +24,8 @@ namespace LinkedList
 		Node* CreateNode();
 		void RemoveNodeAtHead();
 
+		void InitializeNode(Node* newNode, Node* referenceNode, Operation operation);
+
 	public:
 		SingleLinkedList();
 		~SingleLinkedList();
@@ -27,7 +36,7 @@ namespace LinkedList
 		void UpdateNodeDirection(Player::Direction directionToSet);
 		void UpdateNodePosition();
 
-		sf::Vector2i GetNewNodePosition(Node* referenceNode);
+		sf::Vector2i GetNewNodePosition(Node* referenceNode, Operation operation);
 		void InsertNodeAtTail();
 		void RemoveAllNodes();
 		bool ProcessNodeCollission();

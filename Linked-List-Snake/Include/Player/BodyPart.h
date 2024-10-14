@@ -43,6 +43,7 @@ namespace Player
 		void SetDirection(Direction newDirection);
 
 		sf::Vector2i GetNextPosition();
+		sf::Vector2i GetPreviousPosition();
 		void  SetPosition(sf::Vector2i position);
 		sf::Vector2i GetPosition();
 

@@ -59,33 +59,31 @@ namespace LinkedList
 		}
 
 	}
-
-
-	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode)
+	void SingleLinkedList::InitializeNode(Node* newNode, Node* referenceNode, Operation operation)
 	{
-
-		Direction referenceDirection = referenceNode->bodyPart.GetDirection();
-		sf::Vector2i referencePosition = referenceNode->bodyPart.GetPosition();
-
-		switch (referenceDirection)
+		if (referenceNode == nullptr)
 		{
-		case Direction::UP:
-			return sf::Vector2i(referencePosition.x, referencePosition.y - 1);
-			break;
-
-		case Direction::DOWN:
-			return sf::Vector2i(referencePosition.x, referencePosition.y + 1);
-			break;
-
-		case Direction::LEFT:
-			return sf::Vector2i(referencePosition.x + 1, referencePosition.y);
-			break;
-
-		case Direction::RIGHT:
-			return sf::Vector2i(referencePosition.x - 1, referencePosition.y);
-			break;
+			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
+			return;
 		}
 
+		sf::Vector2i position = GetNewNodePosition(referenceNode, operation);
+
+		newNode->bodyPart.Initialize(nodeWidth, nodeHeight, position, referenceNode->bodyPart.GetDirection());
+	}
+
+	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode, Operation operation)
+	{
+
+		switch (operation)
+		{
+		case LinkedList::Operation::HEAD:
+			return referenceNode->bodyPart.GetNextPosition();
+
+		case LinkedList::Operation::TAIL:
+			return referenceNode->bodyPart.GetPreviousPosition();
+
+		}
 		return defaultPosition;
 	}
 
@@ -109,7 +107,7 @@ namespace LinkedList
 
 		currentNode->next = newNode;
 		newNode->bodyPart.Initialize(nodeWidth, nodeHeight,
-			GetNewNodePosition(currentNode), currentNode->bodyPart.GetDirection());
+			GetNewNodePosition(currentNode, Operation::TAIL), currentNode->bodyPart.GetDirection());
 
 		//std::cout << "Inserted new node at position: " << newNode->bodyPart.GetPosition().x << ", " << newNode->bodyPart.GetPosition().y << std::endl;
 
@@ -134,7 +132,9 @@ namespace LinkedList
 		delete currentNode;
 	}
 
-	
+
+
+
 
 	bool SingleLinkedList::ProcessNodeCollission()
 	{

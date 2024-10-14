@@ -128,6 +128,28 @@ namespace Player
 		}
 	}
 
+	sf::Vector2i BodyPart::GetPreviousPosition()
+	{
+		switch (direction)
+		{
+		case Direction::UP:
+			return GetNextPositionDown();
+
+		case Direction::DOWN:
+			return GetNextPositionUp();
+
+		case Direction::LEFT:
+			return GetNextPositionRight();
+
+		case Direction::RIGHT:
+			//printf("right");
+			return GetNextPositionLeft();
+
+		default:
+			return gridPosition;
+		}
+	}
+
 	void BodyPart::SetPosition(sf::Vector2i position)
 	{
 		gridPosition = position;
