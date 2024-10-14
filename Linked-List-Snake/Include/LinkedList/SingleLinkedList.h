@@ -13,7 +13,7 @@ namespace LinkedList
 	class SingleLinkedList
 	{
 	private:
-
+		int linkedListSize;
 		Node* headNode;
 		float nodeWidth;
 		float nodeHeight;
@@ -39,6 +39,8 @@ namespace LinkedList
 		sf::Vector2i GetNewNodePosition(Node* referenceNode, Operation operation);
 		void InsertNodeAtTail();
 		void RemoveAllNodes();
+		void InsertNodeAtHead();
+
 		bool ProcessNodeCollission();
 
 		std::vector<sf::Vector2i> GetNodePositionList();

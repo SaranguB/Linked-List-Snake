@@ -20,6 +20,7 @@ namespace LinkedList
 		nodeHeight = height;
 		defaultPosition = position;
 		defaultDirection = direction;
+		linkedListSize = 0;
 	}
 
 	void SingleLinkedList::Render()
@@ -121,6 +122,23 @@ namespace LinkedList
 		{
 			RemoveNodeAtHead();
 		}
+	}
+
+	void SingleLinkedList::InsertNodeAtHead()
+	{
+		linkedListSize++;
+		Node* newNode = CreateNode();
+
+		if (headNode == nullptr)
+		{
+			headNode = newNode;
+			InitializeNode(newNode, nullptr, Operation::HEAD);
+			return;
+		}
+
+		InitializeNode(newNode, headNode, Operation::HEAD);
+		newNode->next = headNode;
+		headNode = newNode;
 	}
 
 	void SingleLinkedList::RemoveNodeAtHead()
