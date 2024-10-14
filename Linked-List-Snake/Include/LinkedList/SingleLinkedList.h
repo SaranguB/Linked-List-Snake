@@ -42,7 +42,8 @@ namespace LinkedList
 		void RemoveAllNodes();
 		void InsertNodeAtHead();
 		void InsertNodeAtIndex(int index);
-
+		void InsertNodeAtMiddle();
+		int FindMiddleNode();
 
 		bool ProcessNodeCollission();
 

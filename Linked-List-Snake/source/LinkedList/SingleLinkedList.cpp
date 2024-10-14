@@ -168,7 +168,34 @@ namespace LinkedList
 		InitializeNode(newNode, previousNode, Operation::TAIL);
 		linkedListSize++;
 
-		ShiftNodesAfterInsertion(newNode,currentNode,previousNode);
+		ShiftNodesAfterInsertion(newNode, currentNode, previousNode);
+	}
+
+	void SingleLinkedList::InsertNodeAtMiddle()
+	{
+		if (headNode == nullptr)
+		{
+			InsertNodeAtHead();
+			return;
+		}
+
+		int middleIndex = FindMiddleNode();
+		InsertNodeAtIndex(middleIndex);
+	}
+
+	int SingleLinkedList::FindMiddleNode()
+	{
+		Node* slow = headNode;
+		Node* fast = headNode;
+		int middleIndex = 0;
+
+		while (fast != nullptr && fast->next != nullptr)
+		{
+			slow = slow->next;
+			fast = fast->next->next;
+			middleIndex++;
+		}
+		return middleIndex;
 	}
 
 	void SingleLinkedList::ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode)
