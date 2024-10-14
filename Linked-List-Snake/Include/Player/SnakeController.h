@@ -40,7 +40,7 @@ namespace Player
 		void ProcessPlayerInput();
 		void UpdateSnakeDirection();
 		void MoveSnake();
-		void ProcessSnakeCollision();
+		
 		void HandleRestart();
 		
 		void RespawnSnake();
@@ -49,6 +49,11 @@ namespace Player
 		const float movementFrameDuration = 0.1f;
 		float elapsedDuration;
 
+		void ProcessSnakeCollision();
+
+		void ProcessBodyCollision();
+		void ProcessElementsCollision();
+		void ProcessFoodCollision();
 
 	public:
 		SnakeController();
