@@ -3,6 +3,7 @@
 #include <random>
 #include <vector>
 #include "FoodType.h"
+#include <random>
 
 namespace Food
 {
@@ -13,11 +14,16 @@ namespace Food
 		FoodItem* currentFoodItem;
 		float cellWidth;
 		float cellHeight;
+			
 
 		FoodItem* CreateFood(sf::Vector2i position, FoodType type);
 
-		void SpawnFood();
+		std::default_random_engine randomEngine;
+		std::random_device randomDevice;
 
+		void SpawnFood();
+		bool IsValidPosition(std::vector<sf::Vector2i> positionData, sf::Vector2i foodPosition);
+		sf::Vector2i GetValidSpawnPosition();
 
 	public:
 		FoodService();
@@ -29,5 +35,11 @@ namespace Food
 
 		void DestroyFood();
 		void StateFoodSpawning();
+
+
+		sf::Vector2i GetRandomPosition();
+
+		FoodType GetRandomFoodType();
+		 
 	};
 }

@@ -171,4 +171,9 @@ namespace Player
 		return currenSnakeState;
 	}
 
+	std::vector<sf::Vector2i> SnakeController::GetCurrentSnakePositionList()
+	{
+		return singleLinkedList->GetNodePositionList();;
+	}
+
 }

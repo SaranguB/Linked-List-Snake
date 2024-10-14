@@ -22,7 +22,7 @@ namespace Food
 		void Initialize(sf::Vector2i gridPos, float width, float height, FoodType type);
 		void Update();
 		void Render();
-		static const int numbherOfFoods = 8;
+		static const int numberOfFoods = 8;
 
 		sf::String GetTexturePath();
 		sf::Vector2f GetFoodImagePosition();

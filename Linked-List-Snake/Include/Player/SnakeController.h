@@ -2,7 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
 #include"../LinkedList/SingleLinkedList.h"
-
+#include <vector>
 
 namespace Player
 {
@@ -63,7 +63,8 @@ namespace Player
 		void SetSnakeState(SnakeState state);
 		SnakeState GetSnakeState();
 
-		
+		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
+
 	};
 
 }

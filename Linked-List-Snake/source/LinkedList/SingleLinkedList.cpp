@@ -154,6 +154,22 @@ namespace LinkedList
 		return false;
 	}
 
+	std::vector<sf::Vector2i> SingleLinkedList::GetNodePositionList()
+	{
+
+		std::vector<sf::Vector2i> nodesPositionList;
+
+		Node* currentNode = headNode;
+
+		while (currentNode != nullptr)
+		{
+			nodesPositionList.push_back(currentNode->bodyPart.GetPosition());
+			currentNode = currentNode->next;
+		}
+
+		return nodesPositionList;
+	}
+
 	Node* SingleLinkedList::CreateNode()
 	{
 
