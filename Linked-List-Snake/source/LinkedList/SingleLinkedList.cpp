@@ -140,6 +140,57 @@ namespace LinkedList
 		headNode = newNode;
 	}
 
+	void SingleLinkedList::InsertNodeAtIndex(int index)
+	{
+		if (index < 0 || index >= linkedListSize)return;
+
+		if (index == 0)
+		{
+			InsertNodeAtHead();
+			return;
+		}
+
+		Node* newNode = CreateNode();
+
+		int currentIndex = 0;
+		Node* currentNode = headNode;
+		Node* previousNode = nullptr;
+
+		while (currentNode != nullptr && currentIndex < index)
+		{
+			previousNode = currentNode;
+			currentNode = currentNode->next;
+			currentIndex++;
+		}
+
+		previousNode->next = newNode;
+		newNode->next = currentNode;
+		InitializeNode(newNode, previousNode, Operation::TAIL);
+		linkedListSize++;
+
+		ShiftNodesAfterInsertion(newNode,currentNode,previousNode);
+	}
+
+	void SingleLinkedList::ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode)
+	{
+		Node* nextNode = currentNode;
+		currentNode = newNode;
+
+		while (currentNode != nullptr && nextNode != nullptr)
+		{
+
+			currentNode->bodyPart.SetPosition(nextNode->bodyPart.GetPosition());
+			currentNode->bodyPart.SetDirection(nextNode->bodyPart.GetDirection());
+
+			previousNode = currentNode;
+			currentNode = nextNode;
+			nextNode = nextNode->next;
+
+		}
+
+		InitializeNode(currentNode, previousNode, Operation::TAIL);
+	}
+
 	void SingleLinkedList::RemoveNodeAtHead()
 	{
 		Node* currentNode = headNode;

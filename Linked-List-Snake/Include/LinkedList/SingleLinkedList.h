@@ -25,6 +25,7 @@ namespace LinkedList
 		void RemoveNodeAtHead();
 
 		void InitializeNode(Node* newNode, Node* referenceNode, Operation operation);
+		void ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode);
 
 	public:
 		SingleLinkedList();
@@ -40,12 +41,15 @@ namespace LinkedList
 		void InsertNodeAtTail();
 		void RemoveAllNodes();
 		void InsertNodeAtHead();
+		void InsertNodeAtIndex(int index);
+
 
 		bool ProcessNodeCollission();
 
 		std::vector<sf::Vector2i> GetNodePositionList();
 
 		Node* GetHeadNode();
+
 
 	};
 }
