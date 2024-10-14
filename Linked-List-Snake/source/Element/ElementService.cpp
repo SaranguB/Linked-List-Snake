@@ -42,6 +42,16 @@ namespace Element
 		}
 
 	}
+	std::vector<sf::Vector2i> ElementService::GetElementPositionList()
+	{
+		std::vector<sf::Vector2i> elementPositionList;
+
+		for (int i = 0;i < obstacleList.size();i++)
+		{
+			elementPositionList.push_back(obstacleList[i]->GetObstaclePosition());
+		}
+		return elementPositionList;
+	}
 	void ElementService::spawnObstacle(sf::Vector2i position, float cellWidth, float cellHeight)
 	{
 		Obstacle* obstacle = new Obstacle();

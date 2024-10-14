@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include "Obstacle.h"
 #include <vector>
 #include <Element/ElementData.h>
@@ -23,7 +23,7 @@ namespace Element
 
 		const void spawnElements(std::vector<ElementData>& elementDataList, float cellWidth, float cellHeight);
 
-
+		std::vector<sf::Vector2i> GetElementPositionList();
 
 
 

@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <SFML/System/Vector2.hpp>
 
 namespace Player
 {
@@ -19,6 +21,9 @@ namespace Player
 		void Render();
 
 		void SpawnPlayer();
+
+		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
+
 	};
 
 }

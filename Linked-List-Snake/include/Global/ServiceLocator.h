@@ -7,6 +7,7 @@
 #include "Level/LevelService.h"
 #include "Player/PlayerService.h"
 #include "Element/ElementService.h"
+#include "Food/FoodService.h"
 
 namespace Global
 {
@@ -21,6 +22,7 @@ namespace Global
         Level::LevelService* levelService;
         Player::PlayerService* playerService;
         Element::ElementService* elementService;
+        Food::FoodService* foodService;
 
         ServiceLocator();
         ~ServiceLocator();
@@ -43,6 +45,7 @@ namespace Global
         Level::LevelService* GetlevelService();
         Player::PlayerService* GetPlayerService();
         Element::ElementService* GetElementService();
+        Food::FoodService* GetFoodService();
 
         void deleteServiceLocator();
     };
