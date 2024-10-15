@@ -44,9 +44,10 @@ namespace LinkedList
 		void InsertNodeAtMiddle();
 
 		void RemoveAllNodes();
-		void RemoveNodeAtIndex(int index);
 		void RemoveNodeAt(int index);
+		void RemoveNodeAtIndex(int index);
 		void RemoveNodeAtMiddle();
+		void RemoveNodeAtTail();
 		void ShiftNodesAfterRemoval(Node* currentNode);
 		int FindMiddleNode();
 

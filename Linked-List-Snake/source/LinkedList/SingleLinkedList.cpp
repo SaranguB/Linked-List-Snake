@@ -73,7 +73,7 @@ namespace LinkedList
 		}
 
 	}
-	
+
 	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode, Operation operation)
 	{
 
@@ -248,8 +248,29 @@ namespace LinkedList
 		RemoveNodeAt(middleIndex);
 	}
 
+	void SingleLinkedList::RemoveNodeAtTail()
+	{
+		if (headNode == nullptr)return;
+		linkedListSize--;
+
+		Node* currentNode = headNode;
+		if (currentNode->next == nullptr)
+		{
+			RemoveNodeAtHead();
+			return;
+		}
+
+		while (currentNode->next->next != nullptr)
+		{
+			currentNode = currentNode->next;
+		}
+
+		delete(currentNode->next);
+		currentNode->next = nullptr;
+	}
+
 	void SingleLinkedList::ShiftNodesAfterRemoval(Node* currentNode)
-	{	
+	{
 		sf::Vector2i previousPosition = currentNode->bodyPart.GetPosition();
 		Direction previousDirection = currentNode->bodyPart.GetDirection();
 
@@ -285,7 +306,7 @@ namespace LinkedList
 		return middleIndex;
 	}
 
-	
+
 
 	void SingleLinkedList::RemoveNodeAtHead()
 	{
