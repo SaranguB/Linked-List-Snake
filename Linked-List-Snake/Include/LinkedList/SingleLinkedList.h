@@ -48,8 +48,11 @@ namespace LinkedList
 		void RemoveNodeAtIndex(int index);
 		void RemoveNodeAtMiddle();
 		void RemoveNodeAtTail();
+		void RemoveHalfNode();
 		void ShiftNodesAfterRemoval(Node* currentNode);
 		int FindMiddleNode();
+
+		Node* FindNodeAtIndex(int index);
 
 		bool ProcessNodeCollission();
 

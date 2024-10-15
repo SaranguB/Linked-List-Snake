@@ -269,6 +269,27 @@ namespace LinkedList
 		currentNode->next = nullptr;
 	}
 
+	void SingleLinkedList::RemoveHalfNode()
+	{
+		if (linkedListSize <= 1)return;
+
+		int halfLength = linkedListSize / 2;
+		int  newTailIndex = halfLength - 1;
+
+		Node* previousNode = FindNodeAtIndex(newTailIndex);
+		Node* currentNode = previousNode->next;
+
+		while (currentNode != nullptr)
+		{
+			Node* nodeToDelete = currentNode;
+			currentNode = currentNode->next;
+
+			delete(nodeToDelete);
+
+			linkedListSize--;
+		}
+	}
+
 	void SingleLinkedList::ShiftNodesAfterRemoval(Node* currentNode)
 	{
 		sf::Vector2i previousPosition = currentNode->bodyPart.GetPosition();
@@ -304,6 +325,24 @@ namespace LinkedList
 			middleIndex++;
 		}
 		return middleIndex;
+	}
+
+	Node* SingleLinkedList::FindNodeAtIndex(int index)
+	{
+
+		int currentIndex = 0;
+
+		Node* currentNode = headNode;
+		Node* previousNode = nullptr;
+
+
+		while (currentNode != nullptr && currentIndex <= index)
+		{
+			previousNode = currentNode;
+			currentNode = currentNode->next;
+			currentIndex++;
+		}
+		return previousNode;
 	}
 
 
