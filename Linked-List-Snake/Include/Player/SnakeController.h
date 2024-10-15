@@ -3,6 +3,7 @@
 #include "Direction.h"
 #include"../LinkedList/SingleLinkedList.h"
 #include <vector>
+#include "../../Include/Food/FoodService.h"
 
 namespace Player
 {
@@ -40,7 +41,7 @@ namespace Player
 		void ProcessPlayerInput();
 		void UpdateSnakeDirection();
 		void MoveSnake();
-		void ProcessSnakeCollision();
+		
 		void HandleRestart();
 		
 		void RespawnSnake();
@@ -49,6 +50,12 @@ namespace Player
 		const float movementFrameDuration = 0.1f;
 		float elapsedDuration;
 
+		void ProcessSnakeCollision();
+
+		void ProcessBodyCollision();
+		void ProcessElementsCollision();
+		void ProcessFoodCollision();
+		void OnFoodCollelcted(Food::FoodType foodType);
 
 	public:
 		SnakeController();

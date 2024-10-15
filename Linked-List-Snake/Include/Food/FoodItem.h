@@ -28,6 +28,7 @@ namespace Food
 		sf::Vector2f GetFoodImagePosition();
 
 		FoodType GetFoodType();
+		sf::Vector2i GetFoodPosition();
 
 	};
 }

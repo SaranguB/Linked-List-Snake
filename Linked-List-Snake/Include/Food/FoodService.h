@@ -4,6 +4,7 @@
 #include <vector>
 #include "FoodType.h"
 #include <random>
+#include "../../Include/LinkedList/Node.h"
 
 namespace Food
 {
@@ -58,6 +59,7 @@ namespace Food
 
 		void StartFoodSpawning();
 		void StopFoodSpawning();
-		 
+		
+		bool ProcessFoodCollision(LinkedList::Node* headNode, FoodType& outFoodType);
 	};
 }

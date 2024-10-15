@@ -12,6 +12,7 @@ namespace Player
 		sf::Vector2i gridPosition;
 
 		Direction direction;
+		Direction previousDirection;
 
 		float bodyPartWidth;
 		float bodyPartHeight;
@@ -40,9 +41,11 @@ namespace Player
 		void Render();
 
 		Direction GetDirection();
+		Direction GetPreviousDirection();
 		void SetDirection(Direction newDirection);
 
 		sf::Vector2i GetNextPosition();
+		sf::Vector2i GetPreviousPosition();
 		void  SetPosition(sf::Vector2i position);
 		sf::Vector2i GetPosition();
 

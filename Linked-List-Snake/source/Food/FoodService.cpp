@@ -7,6 +7,8 @@ namespace Food
 {
 	using namespace Global;
 	using namespace Level;
+	using namespace LinkedList;
+
 	FoodService::FoodService() : randomEngine(randomDevice())
 	{
 		currentFoodItem = nullptr;
@@ -60,6 +62,7 @@ namespace Food
 	void FoodService::DestroyFood()
 	{
 		if (currentFoodItem)delete currentFoodItem;
+		currentFoodItem = nullptr;
 	}
 	
 	void FoodService::SpawnFood()
@@ -110,6 +113,16 @@ namespace Food
 
 		DestroyFood();
 		Reset();
+	}
+
+	bool FoodService::ProcessFoodCollision(Node* headNode, FoodType& outFoodType)
+	{
+		if (currentFoodItem && currentFoodItem->GetFoodPosition() == headNode->bodyPart.GetPosition())
+		{
+			outFoodType = currentFoodItem->GetFoodType();
+			return true;
+		}
+		return false;
 	}
 
 	FoodItem* FoodService::CreateFood(sf::Vector2i position, FoodType type)

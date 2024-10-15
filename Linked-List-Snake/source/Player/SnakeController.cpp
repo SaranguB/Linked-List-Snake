@@ -1,12 +1,17 @@
 #include "../../Include/Player/SnakeController.h"
 #include "../../Include/Global/ServiceLocator.h"
 #include "../../Include/Event/EventService.h"
+#include "../../Include/Sound/SoundService.h"
+#include "../../Include/Element/ElementService.h"
 
 namespace Player
 {
 	using namespace LinkedList;
 	using namespace Global;
 	using namespace Event;
+	using namespace Sound;
+	using namespace Element;
+	using namespace Food;
 
 	SnakeController::SnakeController()
 	{
@@ -129,9 +134,86 @@ namespace Player
 
 	void SnakeController::ProcessSnakeCollision()
 	{
+		ProcessBodyCollision();
+		ProcessElementsCollision();
+		ProcessFoodCollision();
+	}
+
+	void SnakeController::ProcessBodyCollision()
+	{
 		if (singleLinkedList->ProcessNodeCollission())
 		{
 			currenSnakeState = SnakeState::DEAD;
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+		}
+	}
+
+	void SnakeController::ProcessElementsCollision()
+	{
+		ElementService* elementService = ServiceLocator::getInstance()->GetElementService();
+
+		if (elementService->ProcessElementCollision(singleLinkedList->GetHeadNode()))
+		{
+			currenSnakeState = SnakeState::DEAD;
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+
+		}
+	}
+
+	void SnakeController::ProcessFoodCollision()
+	{
+		FoodService* foodService = ServiceLocator::getInstance()->GetFoodService();
+
+		FoodType foodType;
+
+		if (foodService->ProcessFoodCollision(singleLinkedList->GetHeadNode(), foodType))
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::PICKUP);
+
+			foodService->DestroyFood();
+			OnFoodCollelcted(foodType);
+		}
+	}
+
+	void SnakeController::OnFoodCollelcted(FoodType foodType)
+	{
+		switch (foodType)
+		{
+		case FoodType::PIZZA:
+			singleLinkedList->InsertNodeAtTail();
+			break;
+
+		case FoodType::BURGER:
+			singleLinkedList->InsertNodeAtHead();
+			break;
+
+		case FoodType::CHEESE:
+			singleLinkedList->InsertNodeAtMiddle();
+			break;
+
+		case FoodType::APPLE:
+			singleLinkedList->RemoveNodeAtHead();
+			break;
+
+		case FoodType::MANGO:
+			//Delete at Middle
+			singleLinkedList->RemoveNodeAtMiddle();
+			break;
+
+		case FoodType::ORANGE:
+			//Delete at Tail
+			singleLinkedList->RemoveNodeAtTail();
+			break;
+
+		case FoodType::POISION:
+			//Delete half the snake
+			singleLinkedList->RemoveHalfNode();
+			break;
+
+		case FoodType::ALCOHOL:
+			//Reverse the snake
+			currentSnakeDirection = singleLinkedList->reverse();
+			break;
 		}
 	}
 
