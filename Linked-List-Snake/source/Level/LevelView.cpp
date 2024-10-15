@@ -32,7 +32,7 @@ namespace Level
 		sf::RenderWindow* gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
 		gridWidth = gameWindow->getSize().x - 2 * borderOffsetLeft;
-		gridHeight = gameWindow->getSize().y - 2 * borderOffsetTop;
+		gridHeight = gameWindow->getSize().y - borderOffsetTop - borderOffsetBottom;
 	}
 
 	void LevelView::InitializeBorder()

@@ -9,6 +9,7 @@ namespace Level
 		LevelController* levelController;
 		LevelNumber currentLevel;
 
+
 		void SpawnPlayer();
 
 	public:
@@ -27,5 +28,8 @@ namespace Level
 		void SpawnLevelElements(LevelNumber levelToLoad);
 
 		void SpawnFood();
+
+		LevelNumber GetCurrentLevel();
+		void SetCurrentLevelNumber(LevelNumber levelToLoad);
 	};
 }

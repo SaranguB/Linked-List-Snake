@@ -12,6 +12,7 @@ namespace UI
 	using namespace UIElement;
 	using namespace Interface;
 	using namespace LevelSelection;
+	using namespace GameplayUI;
 
 	UIService::UIService()
 	{
@@ -20,6 +21,7 @@ namespace UI
 		instructions_screen_ui_controller = nullptr;
 		credits_screen_ui_controller = nullptr;
 		levelSelectionUIController = nullptr;
+		gameplayUIController = nullptr;
 
 		createControllers();
 	}
@@ -31,6 +33,7 @@ namespace UI
 		instructions_screen_ui_controller = new InstructionsScreenUIController();
 		credits_screen_ui_controller = new CreditsScreenUIController();
 		levelSelectionUIController = new LevelSelectionUIController();
+		gameplayUIController = new GameplayUIController();
 
 	}
 
@@ -70,6 +73,7 @@ namespace UI
 		instructions_screen_ui_controller->initialize();
 		credits_screen_ui_controller->initialize();
 		levelSelectionUIController->initialize();
+		gameplayUIController->initialize();
 	}
 
 	IUIController* UIService::getCurrentUIController()
@@ -90,6 +94,8 @@ namespace UI
 
 		case GameState::LEVEL_SELECTION:
 			return levelSelectionUIController;
+		case GameState::GAMEPLAY:
+			return gameplayUIController;
 
 		default:
 			return nullptr;
@@ -102,5 +108,6 @@ namespace UI
 		delete(main_menu_controller);
 		delete(instructions_screen_ui_controller);
 		delete(credits_screen_ui_controller);
+		delete(gameplayUIController);
 	}
 }

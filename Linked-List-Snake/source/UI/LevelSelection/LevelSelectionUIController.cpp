@@ -80,24 +80,27 @@ namespace UI
 
 		void LevelSelectionUIController::RegisterButtonCallback()
 		{
-			levelOneButton->registerCallbackFuntion(std::bind(&LevelSelectionUIController::SingleLinkedListButtonCallback, this));
-			levelTwoButton->registerCallbackFuntion(std::bind(&LevelSelectionUIController::DoubleLinkedListButtonCallback, this));
+			levelOneButton->registerCallbackFuntion(std::bind(&LevelSelectionUIController::LevelOneButtonCallback, this));
+			levelTwoButton->registerCallbackFuntion(std::bind(&LevelSelectionUIController::LevelTwoButtonCallback, this));
 
 			MenuButton->registerCallbackFuntion(std::bind(&LevelSelectionUIController::MenuButtonCallback, this));
 		}
 
-		void LevelSelectionUIController::SingleLinkedListButtonCallback()
+		void LevelSelectionUIController::LevelOneButtonCallback()
 		{
 			GameService::setGameState(GameState::GAMEPLAY);
 			ServiceLocator::getInstance()->GetlevelService()->CreateLevel(Level::LevelNumber::ONE);
+			ServiceLocator::getInstance()->GetlevelService()->SetCurrentLevelNumber(Level::LevelNumber::ONE);
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			
 
 		}
 
-		void LevelSelectionUIController::DoubleLinkedListButtonCallback()
+		void LevelSelectionUIController::LevelTwoButtonCallback()
 		{
 			GameService::setGameState(GameState::GAMEPLAY);
 			ServiceLocator::getInstance()->GetlevelService()->CreateLevel(Level::LevelNumber::TWO);
+			ServiceLocator::getInstance()->GetlevelService()->SetCurrentLevelNumber(Level::LevelNumber::TWO);
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 
 		}

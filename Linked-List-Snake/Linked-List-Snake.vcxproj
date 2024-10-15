@@ -148,6 +148,7 @@
     <ClCompile Include="source\Level\LevelView.cpp" />
     <ClCompile Include="source\Time\TimeService.cpp" />
     <ClCompile Include="source\UI\Credits\CreditsScreenUIController.cpp" />
+    <ClCompile Include="source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="source\UI\Instructions\InstructionsScreenUIController.cpp" />
     <ClCompile Include="source\UI\LevelSelection\LevelSelectionUIController.cpp" />
     <ClCompile Include="source\UI\UIElement\AnimatedImageView.cpp" />
@@ -183,13 +184,11 @@
     <ClInclude Include="Include\Player\BodyPart.h" />
     <ClInclude Include="Include\Player\Direction.h" />
     <ClInclude Include="Include\LinkedList\Node.h" />
-    <ClInclude Include="Include\Player\PlayerController.h" />
-    <ClInclude Include="Include\Player\PlayerModel.h" />
     <ClInclude Include="Include\Player\PlayerService.h" />
-    <ClInclude Include="Include\Player\PlayerView.h" />
     <ClInclude Include="Include\Player\SnakeController.h" />
     <ClInclude Include="include\Time\TimeService.h" />
     <ClInclude Include="include\UI\Credits\CreditsScreenUIController.h" />
+    <ClInclude Include="Include\UI\GameplayUI\GameplayUIController.h" />
     <ClInclude Include="include\UI\Instructions\InstructionsScreenUIController.h" />
     <ClInclude Include="Include\UI\LevelSelection\LevelSelectionUIController.h" />
     <ClInclude Include="include\UI\UIElement\AnimatedImageView.h" />

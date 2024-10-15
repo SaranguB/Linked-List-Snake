@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
 #include"../LinkedList/SingleLinkedList.h"
@@ -7,6 +7,26 @@
 
 namespace Player
 {
+	enum class TimeComplexity
+	{
+		NONE,
+		ONE,
+		N,
+	};
+
+	enum class LinkedListOperations
+	{
+		NONE,
+		INSERT_AT_HEAD,
+		INSERT_AT_TAIL,
+		INSERT_AT_MID,
+		REMOVE_AT_HEAD,
+		REMOVE_AT_TAIL,
+		REMOVE_AT_MID,
+		DELETE_HALF_LIST,
+		REVERSE_LIST,
+	};
+
 	enum class SnakeState
 	{
 		ALIVE,
@@ -24,6 +44,11 @@ namespace Player
 	private:
 		LinkedList::SingleLinkedList* singleLinkedList;
 		void CreateLinkedList();
+
+		int playerScore = 0;
+
+		TimeComplexity timeComplexity;
+		LinkedListOperations lastLinkedListOperations;
 
 		const int initialSnakeLength = 10;
 		SnakeState currenSnakeState;
@@ -71,6 +96,11 @@ namespace Player
 		SnakeState GetSnakeState();
 
 		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
+
+		int GetPlayerScore();
+
+		TimeComplexity GetTimeComplexity();
+		LinkedListOperations GetLastOperation();
 
 	};
 
