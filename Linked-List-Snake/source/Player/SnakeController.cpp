@@ -170,6 +170,7 @@ namespace Player
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::PICKUP);
 
+			playerScore++;
 			foodService->DestroyFood();
 			OnFoodCollelcted(foodType);
 		}
@@ -229,10 +230,12 @@ namespace Player
 
 	void SnakeController::Reset()
 	{
+		
 		currenSnakeState = SnakeState::ALIVE;
 		currentSnakeDirection = defaultDirection;
 		elapsedDuration = 0;
 		restartCounter = 0;
+		playerScore = 0;
 		inputState = InputState::WAITING;
 	}
 	void SnakeController::RespawnSnake()
@@ -256,6 +259,11 @@ namespace Player
 	std::vector<sf::Vector2i> SnakeController::GetCurrentSnakePositionList()
 	{
 		return singleLinkedList->GetNodePositionList();;
+	}
+
+	int SnakeController::GetPlayerScore()
+	{
+		return playerScore;
 	}
 
 }

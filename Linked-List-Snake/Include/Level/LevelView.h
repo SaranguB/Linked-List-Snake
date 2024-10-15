@@ -32,7 +32,8 @@ namespace Level
 
 		static const int borderThickness = 10;
 		static const int borderOffsetLeft = 40;
-		static const int borderOffsetTop = 40;
+		static const int borderOffsetTop = 100;
+		static const int borderOffsetBottom = 40;
 
 		float GetGridWidth();
 		float GetGridHeight();

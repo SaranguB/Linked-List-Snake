@@ -24,6 +24,8 @@ namespace Player
 
 		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
 
+		int GetPlayerScore();
+
 	};
 
 }

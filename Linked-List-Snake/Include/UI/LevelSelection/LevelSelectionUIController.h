@@ -31,8 +31,8 @@ namespace UI
 			void InitializeButtons();
 
 			void RegisterButtonCallback();
-			void SingleLinkedListButtonCallback();
-			void DoubleLinkedListButtonCallback();
+			void LevelOneButtonCallback();
+			void LevelTwoButtonCallback();
 			void MenuButtonCallback();
 
 		public:

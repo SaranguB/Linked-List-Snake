@@ -63,6 +63,16 @@ namespace Level
 		ServiceLocator::getInstance()->GetFoodService()->StateFoodSpawning();
 	}
 
+	LevelNumber LevelService::GetCurrentLevel()
+	{
+		return currentLevel;
+	}
+
+	void LevelService::SetCurrentLevelNumber(LevelNumber levelToLoad)
+	{
+		currentLevel = levelToLoad;
+	}
+
 	void LevelService::SpawnPlayer()
 	{
 		ServiceLocator::getInstance()->GetPlayerService()->SpawnPlayer();

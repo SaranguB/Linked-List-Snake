@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
 #include"../LinkedList/SingleLinkedList.h"
@@ -24,6 +24,8 @@ namespace Player
 	private:
 		LinkedList::SingleLinkedList* singleLinkedList;
 		void CreateLinkedList();
+
+		int playerScore = 0;
 
 		const int initialSnakeLength = 10;
 		SnakeState currenSnakeState;
@@ -71,6 +73,8 @@ namespace Player
 		SnakeState GetSnakeState();
 
 		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
+
+		int GetPlayerScore();
 
 	};
 
