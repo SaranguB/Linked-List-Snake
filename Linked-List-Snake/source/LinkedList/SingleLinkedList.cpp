@@ -23,6 +23,19 @@ namespace LinkedList
 		linkedListSize = 0;
 	}
 
+	void SingleLinkedList::InitializeNode(Node* newNode, Node* referenceNode, Operation operation)
+	{
+		if (referenceNode == nullptr)
+		{
+			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
+			return;
+		}
+
+		sf::Vector2i position = GetNewNodePosition(referenceNode, operation);
+
+		newNode->bodyPart.Initialize(nodeWidth, nodeHeight, position, referenceNode->bodyPart.GetDirection());
+	}
+
 	void SingleLinkedList::Render()
 	{
 		Node* currentNode = headNode;
@@ -60,19 +73,7 @@ namespace LinkedList
 		}
 
 	}
-	void SingleLinkedList::InitializeNode(Node* newNode, Node* referenceNode, Operation operation)
-	{
-		if (referenceNode == nullptr)
-		{
-			newNode->bodyPart.Initialize(nodeWidth, nodeHeight, defaultPosition, defaultDirection);
-			return;
-		}
-
-		sf::Vector2i position = GetNewNodePosition(referenceNode, operation);
-
-		newNode->bodyPart.Initialize(nodeWidth, nodeHeight, position, referenceNode->bodyPart.GetDirection());
-	}
-
+	
 	sf::Vector2i SingleLinkedList::GetNewNodePosition(Node* referenceNode, Operation operation)
 	{
 
@@ -112,15 +113,6 @@ namespace LinkedList
 		//std::cout << "Inserted new node at position: " << newNode->bodyPart.GetPosition().x << ", " << newNode->bodyPart.GetPosition().y << std::endl;
 
 
-	}
-
-	void SingleLinkedList::RemoveAllNodes()
-	{
-		if (headNode == nullptr)return;
-		while (headNode != nullptr)
-		{
-			RemoveNodeAtHead();
-		}
 	}
 
 	void SingleLinkedList::InsertNodeAtHead()
@@ -183,21 +175,6 @@ namespace LinkedList
 		InsertNodeAtIndex(middleIndex);
 	}
 
-	int SingleLinkedList::FindMiddleNode()
-	{
-		Node* slow = headNode;
-		Node* fast = headNode;
-		int middleIndex = 0;
-
-		while (fast != nullptr && fast->next != nullptr)
-		{
-			slow = slow->next;
-			fast = fast->next->next;
-			middleIndex++;
-		}
-		return middleIndex;
-	}
-
 	void SingleLinkedList::ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode)
 	{
 		Node* nextNode = currentNode;
@@ -217,6 +194,98 @@ namespace LinkedList
 
 		InitializeNode(currentNode, previousNode, Operation::TAIL);
 	}
+
+	void SingleLinkedList::RemoveAllNodes()
+	{
+		if (headNode == nullptr)return;
+		while (headNode != nullptr)
+		{
+			RemoveNodeAtHead();
+		}
+	}
+
+	void SingleLinkedList::RemoveNodeAt(int index)
+	{
+		if (index < 0 || index >= linkedListSize)return;
+
+		if (index == 0)
+		{
+			RemoveNodeAtHead();
+		}
+		else
+		{
+			RemoveNodeAtIndex(index);
+		}
+	}
+
+	void SingleLinkedList::RemoveNodeAtIndex(int index)
+	{
+		if (index < 0 || index >= linkedListSize)return;
+
+		int currentIndex = 0;
+		Node* currentNode = headNode;
+		Node* previousNode = nullptr;
+		while (currentNode != nullptr && currentIndex < index)
+		{
+			previousNode = currentNode;
+			currentNode = currentNode->next;
+			currentIndex++;
+		}
+
+		previousNode->next = currentNode->next;
+		ShiftNodesAfterRemoval(currentNode);
+		delete(currentNode);
+		linkedListSize--;
+
+	}
+
+
+	void SingleLinkedList::RemoveNodeAtMiddle()
+	{
+		if (headNode == nullptr)return;
+
+		int middleIndex = FindMiddleNode();
+		RemoveNodeAt(middleIndex);
+	}
+
+	void SingleLinkedList::ShiftNodesAfterRemoval(Node* currentNode)
+	{	
+		sf::Vector2i previousPosition = currentNode->bodyPart.GetPosition();
+		Direction previousDirection = currentNode->bodyPart.GetDirection();
+
+		currentNode = currentNode->next;
+
+		while (currentNode != nullptr)
+		{
+			sf::Vector2i tempPosition = currentNode->bodyPart.GetPosition();
+			Direction tempDirection = currentNode->bodyPart.GetDirection();
+
+			currentNode->bodyPart.SetPosition(previousPosition);
+			currentNode->bodyPart.SetDirection(previousDirection);
+
+			currentNode = currentNode->next;
+			previousPosition = tempPosition;
+			previousDirection = tempDirection;
+		}
+
+	}
+
+	int SingleLinkedList::FindMiddleNode()
+	{
+		Node* slow = headNode;
+		Node* fast = headNode;
+		int middleIndex = 0;
+
+		while (fast != nullptr && fast->next != nullptr)
+		{
+			slow = slow->next;
+			fast = fast->next->next;
+			middleIndex++;
+		}
+		return middleIndex;
+	}
+
+	
 
 	void SingleLinkedList::RemoveNodeAtHead()
 	{

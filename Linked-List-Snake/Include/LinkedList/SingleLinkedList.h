@@ -39,10 +39,15 @@ namespace LinkedList
 
 		sf::Vector2i GetNewNodePosition(Node* referenceNode, Operation operation);
 		void InsertNodeAtTail();
-		void RemoveAllNodes();
 		void InsertNodeAtHead();
 		void InsertNodeAtIndex(int index);
 		void InsertNodeAtMiddle();
+
+		void RemoveAllNodes();
+		void RemoveNodeAtIndex(int index);
+		void RemoveNodeAt(int index);
+		void RemoveNodeAtMiddle();
+		void ShiftNodesAfterRemoval(Node* currentNode);
 		int FindMiddleNode();
 
 		bool ProcessNodeCollission();
