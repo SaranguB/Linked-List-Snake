@@ -225,6 +225,7 @@ namespace LinkedList
 
 		currentNode->next = nullptr;
 		delete currentNode;
+		linkedListSize--;
 	}
 
 
