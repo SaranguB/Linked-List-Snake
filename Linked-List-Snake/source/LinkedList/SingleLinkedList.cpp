@@ -327,6 +327,54 @@ namespace LinkedList
 		return middleIndex;
 	}
 
+	Direction SingleLinkedList::GetReverseDirection(Direction referenceDirection)
+	{
+
+		switch (referenceDirection)
+		{
+		case Direction::UP:
+			return Direction::DOWN;
+		case Direction::DOWN:
+			return Direction::UP;
+		case Direction::LEFT:
+			return Direction::RIGHT;
+		case Direction::RIGHT:
+			return Direction::LEFT;
+		}
+	}
+
+	void SingleLinkedList::ReverseNodeDirections()
+	{
+		Node* currentNode = headNode;
+
+		while (currentNode != nullptr)
+		{
+			currentNode->bodyPart.SetDirection(GetReverseDirection(currentNode
+				->bodyPart.GetPreviousDirection()));
+			currentNode = currentNode->next;
+		}
+	}
+
+	Player::Direction SingleLinkedList::reverse()
+	{
+		Node* currentNode = headNode;
+		Node* previousNode = nullptr;
+		Node* nextNode = nullptr;
+
+		while (currentNode != nullptr)
+		{
+			nextNode = currentNode->next;
+			currentNode->next = previousNode;
+
+			previousNode = currentNode;
+			currentNode = nextNode;
+		}
+		headNode = previousNode;
+
+		ReverseNodeDirections();
+		return headNode->bodyPart.GetDirection();
+	}
+
 	Node* SingleLinkedList::FindNodeAtIndex(int index)
 	{
 

@@ -52,6 +52,10 @@ namespace LinkedList
 		void ShiftNodesAfterRemoval(Node* currentNode);
 		int FindMiddleNode();
 
+		Player::Direction GetReverseDirection(Player::Direction referenceDirection);
+		void ReverseNodeDirections();
+		Player::Direction reverse();
+
 		Node* FindNodeAtIndex(int index);
 
 		bool ProcessNodeCollission();
