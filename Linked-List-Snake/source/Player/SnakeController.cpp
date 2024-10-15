@@ -182,38 +182,54 @@ namespace Player
 		{
 		case FoodType::PIZZA:
 			singleLinkedList->InsertNodeAtTail();
+			lastLinkedListOperations = LinkedListOperations::INSERT_AT_TAIL;
+			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::BURGER:
 			singleLinkedList->InsertNodeAtHead();
+			lastLinkedListOperations = LinkedListOperations::INSERT_AT_HEAD;
+			timeComplexity = TimeComplexity::ONE;
 			break;
 
 		case FoodType::CHEESE:
 			singleLinkedList->InsertNodeAtMiddle();
+			lastLinkedListOperations = LinkedListOperations::INSERT_AT_MID;
+			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::APPLE:
 			singleLinkedList->RemoveNodeAtHead();
+			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_HEAD;
+			timeComplexity = TimeComplexity::ONE;
 			break;
 
 		case FoodType::MANGO:
 			//Delete at Middle
 			singleLinkedList->RemoveNodeAtMiddle();
+			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_MID;
+			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::ORANGE:
 			//Delete at Tail
 			singleLinkedList->RemoveNodeAtTail();
+			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_TAIL;
+			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::POISION:
 			//Delete half the snake
 			singleLinkedList->RemoveHalfNode();
+			lastLinkedListOperations = LinkedListOperations::DELETE_HALF_LIST;
+			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::ALCOHOL:
 			//Reverse the snake
 			currentSnakeDirection = singleLinkedList->reverse();
+			lastLinkedListOperations = LinkedListOperations::REVERSE_LIST;
+			timeComplexity = TimeComplexity::N;
 			break;
 		}
 	}
@@ -230,7 +246,8 @@ namespace Player
 
 	void SnakeController::Reset()
 	{
-		
+		timeComplexity = TimeComplexity::NONE;
+		lastLinkedListOperations = LinkedListOperations::NONE;
 		currenSnakeState = SnakeState::ALIVE;
 		currentSnakeDirection = defaultDirection;
 		elapsedDuration = 0;
@@ -264,6 +281,16 @@ namespace Player
 	int SnakeController::GetPlayerScore()
 	{
 		return playerScore;
+	}
+
+	TimeComplexity SnakeController::GetTimeComplexity()
+	{
+		return timeComplexity;
+	}
+
+	LinkedListOperations SnakeController::GetLastOperation()
+	{
+		return lastLinkedListOperations;
 	}
 
 }

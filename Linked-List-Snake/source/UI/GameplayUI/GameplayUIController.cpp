@@ -39,16 +39,16 @@ namespace UI
         {
             level_number_text = new TextView();
             score_text = new TextView();
-            //time_complexity_text = new TextView();
-            //operation_text = new TextView();
+            time_complexity_text = new TextView();
+            operation_text = new TextView();
         }
 
         void GameplayUIController::initializeTexts()
         {
             initializeLevelNumberText();
             initializeScoreText();
-           // initializeTimeComplexityText();
-           // initializeOperationText();
+            initializeTimeComplexityText();
+           initializeOperationText();
         }
 
         void GameplayUIController::initializeLevelNumberText()
@@ -61,15 +61,15 @@ namespace UI
             score_text->initialize("Score : 0", sf::Vector2f(score_text_x_position, text_y_position), FontType::BUBBLE_BOBBLE, font_size, sf::Color::Black);
         }
 
-       /* void GameplayUIController::initializeTimeComplexityText()
+        void GameplayUIController::initializeTimeComplexityText()
         {
             time_complexity_text->initialize("Time Complexity : O(1)", sf::Vector2f(time_complexity_text_x_position, time_complexity_text_y_position), FontType::BUBBLE_BOBBLE, operations_font_size, sf::Color::Black);
-        }*/
+        }
 
-       /* void GameplayUIController::initializeOperationText()
+        void GameplayUIController::initializeOperationText()
         {
             operation_text->initialize("Last Operation : Insert at Middle", sf::Vector2f(operations_text_x_position, operations_text_y_position), FontType::BUBBLE_BOBBLE, operations_font_size, sf::Color::Black);
-        }*/
+        }
 
        void GameplayUIController::updateLevelNumberText()
         {
@@ -89,9 +89,9 @@ namespace UI
             score_text->update();
         }
 
-       /* void GameplayUIController::updateTimeComplexityText()
+        void GameplayUIController::updateTimeComplexityText()
         {
-            TimeComplexity time_complexity = ServiceLocator::getInstance()->getPlayerService()->getTimeComplexity();
+            TimeComplexity time_complexity = ServiceLocator::getInstance()->GetPlayerService()->GetTimeComplexity();
             sf::String time_complexity_value;
 
             switch (time_complexity)
@@ -107,11 +107,11 @@ namespace UI
             }
             time_complexity_text->setText("Time Complexity : (" + time_complexity_value + ")");
             time_complexity_text->update();
-        }*/
+        }
 
-        /*void GameplayUIController::updateOperationText()
+        void GameplayUIController::updateOperationText()
         {
-            LinkedListOperations operation = ServiceLocator::getInstance()->getPlayerService()->getLastOperation();
+            LinkedListOperations operation = ServiceLocator::getInstance()->GetPlayerService()->GetLastOperation();
             sf::String operation_value;
 
             switch (operation)
@@ -147,38 +147,38 @@ namespace UI
 
             operation_text->setText("Last Operation : " + operation_value);
             operation_text->update();
-        }*/
+        }
 
         void GameplayUIController::update()
         {
             updateLevelNumberText();
             updateScoreText();
-            //updateTimeComplexityText();
-           // updateOperationText();
+            updateTimeComplexityText();
+            updateOperationText();
         }
 
         void GameplayUIController::render()
         {
             level_number_text->render();
             score_text->render();
-            //time_complexity_text->render();
-           // operation_text->render();
+            time_complexity_text->render();
+            operation_text->render();
         }
 
         void GameplayUIController::show()
         {
             level_number_text->show();
             score_text->show();
-           // time_complexity_text->show();
-           // operation_text->show();
+            time_complexity_text->show();
+            operation_text->show();
         }
 
         void GameplayUIController::destroy()
         {
             delete (level_number_text);
             delete (score_text);
-          //  delete (time_complexity_text);
-           // delete (operation_text);
+            delete (time_complexity_text);
+            delete (operation_text);
         }
     }
 }
