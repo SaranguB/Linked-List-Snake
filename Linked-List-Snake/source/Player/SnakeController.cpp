@@ -180,35 +180,39 @@ namespace Player
 		switch (foodType)
 		{
 		case FoodType::PIZZA:
-			//Insert At Tail
+			singleLinkedList->InsertNodeAtTail();
 			break;
 
 		case FoodType::BURGER:
-			//Insert At Head
+			singleLinkedList->InsertNodeAtHead();
 			break;
 
 		case FoodType::CHEESE:
-			//Insert in Middle
+			singleLinkedList->InsertNodeAtMiddle();
 			break;
 
 		case FoodType::APPLE:
-			//Delete at Head
+			singleLinkedList->RemoveNodeAtHead();
 			break;
 
 		case FoodType::MANGO:
 			//Delete at Middle
+			singleLinkedList->RemoveNodeAtMiddle();
 			break;
 
 		case FoodType::ORANGE:
 			//Delete at Tail
+			singleLinkedList->RemoveNodeAtTail();
 			break;
 
 		case FoodType::POISION:
 			//Delete half the snake
+			singleLinkedList->RemoveHalfNode();
 			break;
 
 		case FoodType::ALCOHOL:
 			//Reverse the snake
+			currentSnakeDirection = singleLinkedList->reverse();
 			break;
 		}
 	}

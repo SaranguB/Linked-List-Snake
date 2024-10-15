@@ -288,6 +288,7 @@ namespace LinkedList
 
 			linkedListSize--;
 		}
+		previousNode->next = nullptr;
 	}
 
 	void SingleLinkedList::ShiftNodesAfterRemoval(Node* currentNode)

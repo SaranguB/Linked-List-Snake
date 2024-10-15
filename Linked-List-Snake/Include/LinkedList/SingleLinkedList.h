@@ -22,7 +22,6 @@ namespace LinkedList
 		Player::Direction defaultDirection;
 
 		Node* CreateNode();
-		void RemoveNodeAtHead();
 
 		void InitializeNode(Node* newNode, Node* referenceNode, Operation operation);
 		void ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode);
@@ -49,6 +48,8 @@ namespace LinkedList
 		void RemoveNodeAtMiddle();
 		void RemoveNodeAtTail();
 		void RemoveHalfNode();
+		void RemoveNodeAtHead();
+
 		void ShiftNodesAfterRemoval(Node* currentNode);
 		int FindMiddleNode();
 
