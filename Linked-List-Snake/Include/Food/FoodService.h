@@ -4,7 +4,7 @@
 #include <vector>
 #include "FoodType.h"
 #include <random>
-#include "../../Include/LinkedList/Node.h"
+#include "../../Include/LinkedListLib/SingleLinked/SingleNode.h"
 
 namespace Food
 {

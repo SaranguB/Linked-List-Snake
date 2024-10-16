@@ -2,7 +2,7 @@
 #include "Obstacle.h"
 #include <vector>
 #include <Element/ElementData.h>
-#include "../LinkedList/Node.h"
+#include "../LinkedListLib/SingleLinked/SingleNode.h"
 
 namespace Element
 {

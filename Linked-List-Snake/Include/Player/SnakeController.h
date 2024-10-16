@@ -1,7 +1,7 @@
 	#pragma once
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
-#include"../LinkedList/SingleLinkedList.h"
+#include"../LinkedListLib/SingleLinked/SingleLinkedList.h"
 #include <vector>
 #include "../../Include/Food/FoodService.h"
 

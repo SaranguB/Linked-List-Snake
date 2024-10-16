@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "../SingleLinked/SingleNode.h"
 #include "../../Include/Player/Direction.h"
 namespace LinkedList
 {

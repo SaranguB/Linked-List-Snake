@@ -191,16 +191,7 @@
     <ClInclude Include="Include\Level\LevelView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Player\PlayerController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\Player\PlayerModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\Player\PlayerService.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\Player\PlayerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\Player\SnakeController.h">
@@ -215,10 +206,10 @@
     <ClInclude Include="Include\Player\BodyPart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\LinkedList\Node.h">
+    <ClInclude Include="Include\LinkedListLib\SingleLinked\SingleNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\LinkedList\SingleLinkedList.h">
+    <ClInclude Include="Include\LinkedListLib\SingleLinked\SingleLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\Element\ElementService.h">
