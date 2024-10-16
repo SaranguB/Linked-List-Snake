@@ -25,7 +25,7 @@ namespace LinkedListLib
 			void InsertNodeAtIndex(int index) override;
 			void InsertNodeAtMiddle() override;
 
-			void ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode) ;
+			void ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode);
 
 			void RemoveAllNodes() override;
 			void RemoveNodeAt(int index) override;
@@ -38,7 +38,7 @@ namespace LinkedListLib
 			void ShiftNodesAfterRemoval(Node* currentNode);
 			
 			void ReverseNodeDirections();
-			Player::Direction reverse() override;
+			Player::Direction Reverse() override;
 
 		};
 	}

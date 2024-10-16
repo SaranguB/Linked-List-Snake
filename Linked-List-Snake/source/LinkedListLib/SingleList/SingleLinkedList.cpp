@@ -253,7 +253,7 @@ namespace LinkedListLib
 			}
 		}
 
-		Player::Direction SingleLinkedList::reverse()
+		Player::Direction SingleLinkedList::Reverse()
 		{
 			Node* currentNode = headNode;
 			Node* previousNode = nullptr;

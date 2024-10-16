@@ -54,7 +54,7 @@ namespace LinkedListLib
 		virtual void RemoveAllNodes() = 0;
 		virtual void RemoveHalfNodes() = 0;
 
-		virtual Direction reverse() = 0;
+		virtual Direction Reverse() = 0;
 
 		virtual void UpdateNodePosition();
 		virtual void UpdateNodeDirection(Direction directionToSet);
