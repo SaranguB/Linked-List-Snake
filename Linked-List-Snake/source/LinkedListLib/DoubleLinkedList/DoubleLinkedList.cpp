@@ -172,6 +172,28 @@ namespace LinkedListLib
 			delete(currentNode);
 		}
 
+		void DoubleLinkedList::RemoveHalfNodes()
+		{
+			if (linkedListSize <= 1)return;
+
+			int halfLength = linkedListSize / 2;
+			int  newTailIndex = halfLength - 1;
+
+			Node* previousNode = FindNodeAtIndex(newTailIndex);
+			Node* currentNode = previousNode->next;
+
+			while (currentNode != nullptr)
+			{
+				Node* nodeToDelete = currentNode;
+				currentNode = currentNode->next;
+
+				delete(nodeToDelete);
+
+				linkedListSize--;
+			}
+			previousNode->next = nullptr;
+		}
+
 		void DoubleLinkedList::RemoveAllNodes()
 		{
 			if (headNode == nullptr)return;
