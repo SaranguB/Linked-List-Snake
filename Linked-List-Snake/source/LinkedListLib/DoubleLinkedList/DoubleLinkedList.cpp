@@ -172,6 +172,16 @@ namespace LinkedListLib
 			delete(currentNode);
 		}
 
+		void DoubleLinkedList::RemoveAllNodes()
+		{
+			if (headNode == nullptr)return;
+
+			while (headNode != nullptr)
+			{
+				RemoveNodeAtHead();
+			}
+		}
+
 		void DoubleLinkedList::RemoveNodeAt(int index)
 		{
 			if (index < 0 || index >= linkedListSize)return;
