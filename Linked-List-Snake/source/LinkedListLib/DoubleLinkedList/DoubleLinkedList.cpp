@@ -13,7 +13,7 @@ namespace LinkedListLib
 
 		DoubleLinkedList::~DoubleLinkedList() = default;
 
-		
+
 
 		void DoubleLinkedList::InsertNodeAtHead()
 		{
@@ -35,6 +35,8 @@ namespace LinkedListLib
 
 			headNode = newNode;
 		}
+
+
 
 		void DoubleLinkedList::InsertNodeAtTail()
 		{
@@ -62,11 +64,75 @@ namespace LinkedListLib
 
 		void DoubleLinkedList::InsertNodeAtIndex(int index)
 		{
+			if (index < 0 ||
+				index >= linkedListSize)return;
+
+			if (index == 0)
+			{
+				InsertNodeAtHead();
+				return;
+			}
+
+			Node* newNode = CreateNode();
+
+			int currentIndex = 0;
+			Node* currentNode = headNode;
+			Node* previousNode = nullptr;
+
+			while (currentNode != nullptr && currentIndex < index)
+			{
+				previousNode = currentNode;
+				currentNode = currentNode->next;
+				currentIndex++;
+			}
+
+			previousNode->next = newNode;
+			static_cast<DoubleNode*>(newNode)->previous = previousNode;
+			newNode->next = currentNode;
+			static_cast<DoubleNode*>(currentNode)->previous = newNode;
+
+			InitializeNode(newNode, headNode, Operation::TAIL);
+			linkedListSize++;
+
+			ShiftNodesAfterInsertion(newNode, currentNode, previousNode);
 		}
 
 		void DoubleLinkedList::InsertNodeAtMiddle()
 		{
+			if (headNode == nullptr)
+			{
+				InsertNodeAtHead();
+				return;
+			}
+
+			int middleIndex = FindMiddleNode();
+			InsertNodeAtIndex(middleIndex);
 		}
+
+
+		void DoubleLinkedList::ShiftNodesAfterInsertion(Node* newNode, Node* currentNode, Node* previousNode)
+		{
+			Node* nextNode = currentNode;
+			currentNode = newNode;
+
+			while (currentNode != nullptr && nextNode != nullptr)
+			{
+
+				currentNode->bodyPart.SetPosition(nextNode->bodyPart.GetPosition());
+				currentNode->bodyPart.SetDirection(nextNode->bodyPart.GetDirection());
+
+				previousNode = currentNode;
+				currentNode = nextNode;
+				nextNode = nextNode->next;
+
+			}
+
+			InitializeNode(currentNode, previousNode, Operation::TAIL);
+		}
+
+
+
+
 
 	}
 }
