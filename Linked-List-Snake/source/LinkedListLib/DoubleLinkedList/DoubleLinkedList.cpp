@@ -130,6 +130,8 @@ namespace LinkedListLib
 			InitializeNode(currentNode, previousNode, Operation::TAIL);
 		}
 
+	
+
 		void DoubleLinkedList::RemoveNodeAtHead()
 		{
 			linkedListSize--;
@@ -146,5 +148,28 @@ namespace LinkedListLib
 			delete currentNode;
 		}
 
+		void DoubleLinkedList::RemoveNodeAtTail()
+		{
+			if (headNode == nullptr)return;
+
+			linkedListSize--;
+
+			Node* currentNode = headNode;
+
+			if (currentNode->next == nullptr)
+			{
+				RemoveNodeAtHead();
+				return;
+			}
+
+			while (currentNode->next != nullptr)
+			{
+				currentNode = currentNode->next;
+			}
+
+			Node* previous = static_cast<DoubleNode*>(currentNode)->previous;
+			previous->next = nullptr;
+			delete currentNode;
+		}
 }
 }
