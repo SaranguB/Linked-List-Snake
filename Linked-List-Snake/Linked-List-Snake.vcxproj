@@ -133,11 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\LinkedListLib\LinkedList.cpp" />
     <ClCompile Include="source\Food\FoodService.cpp" />
     <ClCompile Include="source\Food\FoodItem.cpp" />
     <ClCompile Include="source\Element\ElementService.cpp" />
     <ClCompile Include="source\Element\Obstacle.cpp" />
-    <ClCompile Include="source\LinkedList\SingleLinkedList.cpp" />
+    <ClCompile Include="source\LinkedListLib\DoubleLinkedList\DoubleLinkedList.cpp" />
+    <ClCompile Include="source\LinkedListLib\SingleList\SingleLinkedList.cpp" />
     <ClCompile Include="source\Player\BodyPart.cpp" />
     <ClCompile Include="source\Player\PlayerService.cpp" />
     <ClCompile Include="source\Player\SnakeController.cpp" />
@@ -180,6 +182,10 @@
     <ClInclude Include="Include\Level\LevelNumber.h" />
     <ClInclude Include="Include\Level\LevelService.h" />
     <ClInclude Include="Include\Level\LevelView.h" />
+    <ClInclude Include="Include\LinkedListLib\DoubleLinked\DoubleLinkedList.h" />
+    <ClInclude Include="Include\LinkedListLib\DoubleLinked\DoubleNode.h" />
+    <ClInclude Include="Include\LinkedListLib\LinkedList.h" />
+    <ClInclude Include="Include\LinkedListLib\Node.h" />
     <ClInclude Include="Include\LinkedListLib\SingleLinked\SingleLinkedList.h" />
     <ClInclude Include="Include\Player\BodyPart.h" />
     <ClInclude Include="Include\Player\Direction.h" />

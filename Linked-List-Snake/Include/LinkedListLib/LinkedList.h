@@ -1,8 +1,11 @@
 #pragma once
 #include "Node.h"
+#include "Player/Direction.h"
 
 namespace LinkedListLib
 {
+	using namespace Player;
+
 	enum class Operation
 	{
 		HEAD,
@@ -50,8 +53,6 @@ namespace LinkedListLib
 		virtual void RemoveNodeAt(int index) = 0;
 		virtual void RemoveAllNodes() = 0;
 		virtual void RemoveHalfNodes() = 0;
-
-
 
 		virtual Direction reverse() = 0;
 
