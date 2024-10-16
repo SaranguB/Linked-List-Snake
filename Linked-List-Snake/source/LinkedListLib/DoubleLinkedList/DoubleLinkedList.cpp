@@ -38,6 +38,26 @@ namespace LinkedListLib
 
 		void DoubleLinkedList::InsertNodeAtTail()
 		{
+			linkedListSize++;
+			Node* newNode = CreateNode();
+			Node* currentNode = headNode;
+
+			if (currentNode == nullptr)
+			{
+				headNode = newNode;
+				static_cast<DoubleNode*>(newNode)->previous = nullptr;
+				InitializeNode(newNode, nullptr, Operation::TAIL);
+				return;
+			}
+
+			while (currentNode->next != nullptr)
+			{
+				currentNode = currentNode->next;
+			}
+
+			currentNode->next = newNode;
+			static_cast<DoubleNode*>(newNode)->previous = currentNode;
+			InitializeNode(newNode, currentNode, Operation::TAIL);
 		}
 
 		void DoubleLinkedList::InsertNodeAtIndex(int index)
