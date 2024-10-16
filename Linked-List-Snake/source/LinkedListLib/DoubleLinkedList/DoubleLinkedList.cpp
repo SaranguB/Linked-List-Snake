@@ -277,5 +277,25 @@ namespace LinkedListLib
 				previousDirection = tempDirection;
 			}
 		}
+		Direction DoubleLinkedList::Reverse()
+		{
+			Node* currentNode = headNode;
+			Node* previousNode = nullptr;
+			Node* nextNode = nullptr;
+
+			while (currentNode != nullptr)
+			{
+				nextNode = currentNode->next;
+				currentNode->next = previousNode;
+				static_cast<DoubleNode*>(currentNode)->previous = nextNode;
+
+				previousNode = currentNode;
+				currentNode = nextNode;
+			}
+			headNode = previousNode;
+
+			ReverseNodeDirections();
+			return headNode->bodyPart.GetDirection();
+		}
 	}
 }
