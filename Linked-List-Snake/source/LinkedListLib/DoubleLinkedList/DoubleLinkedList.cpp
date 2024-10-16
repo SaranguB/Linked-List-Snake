@@ -130,9 +130,21 @@ namespace LinkedListLib
 			InitializeNode(currentNode, previousNode, Operation::TAIL);
 		}
 
+		void DoubleLinkedList::RemoveNodeAtHead()
+		{
+			linkedListSize--;
 
+			Node* currentNode = headNode;
+			headNode = headNode->next;
 
+			if (headNode != nullptr)
+			{
+				static_cast<DoubleNode*>(headNode)->previous = nullptr;
+			}
 
+			currentNode->next = nullptr;
+			delete currentNode;
+		}
 
-	}
+}
 }
