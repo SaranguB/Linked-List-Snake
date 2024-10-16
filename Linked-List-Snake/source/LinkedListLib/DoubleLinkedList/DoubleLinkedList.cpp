@@ -130,7 +130,7 @@ namespace LinkedListLib
 			InitializeNode(currentNode, previousNode, Operation::TAIL);
 		}
 
-	
+
 
 		void DoubleLinkedList::RemoveNodeAtHead()
 		{
@@ -169,7 +169,81 @@ namespace LinkedListLib
 
 			Node* previous = static_cast<DoubleNode*>(currentNode)->previous;
 			previous->next = nullptr;
-			delete currentNode;
+			delete(currentNode);
 		}
-}
+
+		void DoubleLinkedList::RemoveNodeAt(int index)
+		{
+			if (index < 0 || index >= linkedListSize)return;
+
+			if (index == 0)
+			{
+				RemoveNodeAtHead();
+			}
+			else
+			{
+				RemoveNodeAtIndex(index);
+			}
+		}
+
+		void DoubleLinkedList::RemoveNodeAtIndex(int index)
+		{
+			linkedListSize--;
+
+			int currentIndex = 0;
+			Node* currentNode = headNode;
+			Node* previousNode = nullptr;
+
+			while (currentNode != nullptr && currentIndex < index)
+			{
+				previousNode = currentNode;
+				currentNode = currentNode->next;
+				currentIndex++;
+			}
+
+			if (previousNode != nullptr)
+			{
+				previousNode->next = currentNode->next;
+			}
+
+			if (currentNode->next != nullptr)
+			{
+				Node* nextNode = currentNode->next;
+				static_cast<DoubleNode*>(nextNode)->previous = previousNode;
+			}
+			
+			ShiftNodesAfterRemoval(currentNode);
+			delete(currentNode);
+			
+		}
+
+		void DoubleLinkedList::RemoveNodeAtMiddle()
+		{
+			if (headNode == nullptr)return;
+
+			int middleIndex = FindMiddleNode();
+			RemoveNodeAt(middleIndex);
+		}
+
+		void DoubleLinkedList::ShiftNodesAfterRemoval(Node* currentNode)
+		{
+			sf::Vector2i previousPosition = currentNode->bodyPart.GetPosition();
+			Direction previousDirection = currentNode->bodyPart.GetDirection();
+
+			currentNode = currentNode->next;
+
+			while (currentNode != nullptr)
+			{
+				sf::Vector2i tempPosition = currentNode->bodyPart.GetPosition();
+				Direction tempDirection = currentNode->bodyPart.GetDirection();
+
+				currentNode->bodyPart.SetPosition(previousPosition);
+				currentNode->bodyPart.SetDirection(previousDirection);
+
+				currentNode = currentNode->next;
+				previousPosition = tempPosition;
+				previousDirection = tempDirection;
+			}
+		}
+	}
 }
