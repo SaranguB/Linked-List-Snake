@@ -287,8 +287,7 @@ namespace LinkedListLib
 		Node* SingleLinkedList::CreateNode()
 		{
 
-
-			return new Node();
+			return new SingleNode();
 		}
 	}
 

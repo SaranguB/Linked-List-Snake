@@ -1,5 +1,6 @@
 #pragma once
 #include "../LinkedList.h"
+#include "../DoubleLinked/DoubleNode.h"
 
 namespace LinkedListLib
 {
@@ -30,8 +31,8 @@ namespace LinkedListLib
 			void RemoveNodeAtTail() override;
 			void RemoveHalfNodes() override;
 			void RemoveNodeAtHead() override;
-			void ShiftNodesAfterRemoval(Node* currentNode);
 
+			void ShiftNodesAfterRemoval(Node* currentNode);
 
 			Direction Reverse() override;
 		};

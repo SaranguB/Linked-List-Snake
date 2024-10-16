@@ -5,7 +5,7 @@ namespace LinkedListLib
 {
 	namespace DoubleLinked
 	{
-		struct DoubleLinked : public Node
+		struct DoubleNode : public Node
 		{
 			Node* previous = nullptr;
 		};
