@@ -106,6 +106,8 @@ namespace Player
 
 		void CreateLinkedList(Level::LinkedListType levelType);
 
+		bool IsSnakeDead();
+
 
 	};
 

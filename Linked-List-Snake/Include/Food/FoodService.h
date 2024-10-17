@@ -60,6 +60,6 @@ namespace Food
 		void StartFoodSpawning();
 		void StopFoodSpawning();
 		
-		bool ProcessFoodCollision(LinkedList::Node* headNode, FoodType& outFoodType);
+		bool ProcessFoodCollision(LinkedListLib::Node* headNode, FoodType& outFoodType);
 	};
 }

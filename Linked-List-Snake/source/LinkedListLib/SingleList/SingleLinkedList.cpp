@@ -22,8 +22,12 @@ namespace LinkedListLib
 			Node* newNode = CreateNode();
 			Node* currentNode = headNode;
 
+			//printf("hi");
+
+
 			if (currentNode == nullptr)
 			{
+				//printf("hi");
 				headNode = newNode;
 				InitializeNode(newNode, nullptr, Operation::TAIL);
 				return;

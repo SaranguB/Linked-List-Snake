@@ -32,14 +32,21 @@ namespace Player
 		{
 
 		case LinkedListType::SINGLE_LINKED_LIST:
-			linkedList = new SingleLinkedList;
+
+			linkedList = new SingleLinkedList();
 			break;
+
 		case LinkedListType::DOUBLE_LINKED_LIST:
 			linkedList = new DoubleLinkedList();
 			break;
 		}
 
 		InitializeLinkedList();
+	}
+
+	bool SnakeController::IsSnakeDead()
+	{
+		return currenSnakeState == SnakeState::DEAD;
 	}
 
 	Player::SnakeController::~SnakeController()

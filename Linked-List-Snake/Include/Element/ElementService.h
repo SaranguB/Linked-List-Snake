@@ -26,7 +26,7 @@ namespace Element
 
 		std::vector<sf::Vector2i> GetElementPositionList();
 
-		bool ProcessElementCollision(LinkedList::Node* headNode);
+		bool ProcessElementCollision(LinkedListLib::Node* headNode);
 
 	};
 }
