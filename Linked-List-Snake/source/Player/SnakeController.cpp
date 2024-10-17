@@ -3,42 +3,71 @@
 #include "../../Include/Event/EventService.h"
 #include "../../Include/Sound/SoundService.h"
 #include "../../Include/Element/ElementService.h"
+#include "Level/LevelConfig.h"
+#include "LinkedListLib/DoubleLinked/DoubleLinkedList.h"
+#include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 
 namespace Player
 {
-	using namespace LinkedList;
+	using namespace LinkedListLib;
 	using namespace Global;
 	using namespace Event;
 	using namespace Sound;
 	using namespace Element;
 	using namespace Food;
+	using namespace Level;
+	using namespace SingleLinked;
+	using namespace DoubleLinked;
 
 	SnakeController::SnakeController()
 	{
-		singleLinkedList = nullptr;
-		CreateLinkedList();
+		linkedList = nullptr;
 		currentSnakeDirection = defaultDirection;
 
 	}
 
-	void SnakeController::CreateLinkedList()
+	void SnakeController::CreateLinkedList(LinkedListType levelType)
 	{
-		singleLinkedList = new SingleLinkedList();
+		switch (levelType)
+		{
+
+		case LinkedListType::SINGLE_LINKED_LIST:
+
+			linkedList = new SingleLinkedList();
+			break;
+
+		case LinkedListType::DOUBLE_LINKED_LIST:
+			linkedList = new DoubleLinkedList();
+			break;
+		}
+
+		InitializeLinkedList();
+	}
+
+	bool SnakeController::IsSnakeDead()
+	{
+		return currenSnakeState == SnakeState::DEAD;
 	}
 
 	Player::SnakeController::~SnakeController()
 	{
-		delete singleLinkedList;
+		delete linkedList;
 	}
 
 	void SnakeController::Initialize()
 	{
+		
+	}
+
+	void SnakeController::InitializeLinkedList()
+	{
 		float width = ServiceLocator::getInstance()->GetlevelService()->GetCellHeight();
 		float height = ServiceLocator::getInstance()->GetlevelService()->GetCellWidth();
 
-		singleLinkedList->Initialize(width, height, defaultPosition, defaultDirection);
 		Reset();
+		linkedList->Initialize(width, height, defaultPosition, defaultDirection);
 	}
+
 
 	void SnakeController::Update()
 	{
@@ -61,7 +90,7 @@ namespace Player
 
 	void SnakeController::Render()
 	{
-		singleLinkedList->Render();
+		linkedList->render();
 	}
 
 	void SnakeController::DelayedUpdate()
@@ -85,9 +114,10 @@ namespace Player
 	{
 		for (int i = 0;i < initialSnakeLength;i++)
 		{
-			singleLinkedList->InsertNodeAtTail();
+			linkedList->InsertNodeAtTail();
 		}
 	}
+
 
 	void SnakeController::ProcessPlayerInput()
 	{
@@ -124,12 +154,12 @@ namespace Player
 
 	void SnakeController::UpdateSnakeDirection()
 	{
-		singleLinkedList->UpdateNodeDirection(currentSnakeDirection);
+		linkedList->UpdateNodeDirection(currentSnakeDirection);
 	}
 
 	void SnakeController::MoveSnake()
 	{
-		singleLinkedList->UpdateNodePosition();
+		linkedList->UpdateNodePosition();
 	}
 
 	void SnakeController::ProcessSnakeCollision()
@@ -141,7 +171,7 @@ namespace Player
 
 	void SnakeController::ProcessBodyCollision()
 	{
-		if (singleLinkedList->ProcessNodeCollission())
+		if (linkedList->ProcessNodeCollision())
 		{
 			currenSnakeState = SnakeState::DEAD;
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
@@ -152,7 +182,7 @@ namespace Player
 	{
 		ElementService* elementService = ServiceLocator::getInstance()->GetElementService();
 
-		if (elementService->ProcessElementCollision(singleLinkedList->GetHeadNode()))
+		if (elementService->ProcessElementCollision(linkedList->GetHeadNode()))
 		{
 			currenSnakeState = SnakeState::DEAD;
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
@@ -166,7 +196,7 @@ namespace Player
 
 		FoodType foodType;
 
-		if (foodService->ProcessFoodCollision(singleLinkedList->GetHeadNode(), foodType))
+		if (foodService->ProcessFoodCollision(linkedList->GetHeadNode(), foodType))
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::PICKUP);
 
@@ -181,53 +211,53 @@ namespace Player
 		switch (foodType)
 		{
 		case FoodType::PIZZA:
-			singleLinkedList->InsertNodeAtTail();
+			linkedList->InsertNodeAtTail();
 			lastLinkedListOperations = LinkedListOperations::INSERT_AT_TAIL;
 			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::BURGER:
-			singleLinkedList->InsertNodeAtHead();
+			linkedList->InsertNodeAtHead();
 			lastLinkedListOperations = LinkedListOperations::INSERT_AT_HEAD;
 			timeComplexity = TimeComplexity::ONE;
 			break;
 
 		case FoodType::CHEESE:
-			singleLinkedList->InsertNodeAtMiddle();
+			linkedList->InsertNodeAtMiddle();
 			lastLinkedListOperations = LinkedListOperations::INSERT_AT_MID;
 			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::APPLE:
-			singleLinkedList->RemoveNodeAtHead();
+			linkedList->RemoveNodeAtHead();
 			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_HEAD;
 			timeComplexity = TimeComplexity::ONE;
 			break;
 
 		case FoodType::MANGO:
 			//Delete at Middle
-			singleLinkedList->RemoveNodeAtMiddle();
+			linkedList->RemoveNodeAtMiddle();
 			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_MID;
 			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::ORANGE:
 			//Delete at Tail
-			singleLinkedList->RemoveNodeAtTail();
+			linkedList->RemoveNodeAtTail();
 			lastLinkedListOperations = LinkedListOperations::REMOVE_AT_TAIL;
 			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::POISION:
 			//Delete half the snake
-			singleLinkedList->RemoveHalfNode();
+			linkedList->RemoveHalfNodes();
 			lastLinkedListOperations = LinkedListOperations::DELETE_HALF_LIST;
 			timeComplexity = TimeComplexity::N;
 			break;
 
 		case FoodType::ALCOHOL:
 			//Reverse the snake
-			currentSnakeDirection = singleLinkedList->reverse();
+			currentSnakeDirection = linkedList->Reverse();
 			lastLinkedListOperations = LinkedListOperations::REVERSE_LIST;
 			timeComplexity = TimeComplexity::N;
 			break;
@@ -257,7 +287,7 @@ namespace Player
 	}
 	void SnakeController::RespawnSnake()
 	{
-		singleLinkedList->RemoveAllNodes();
+		linkedList->RemoveAllNodes();
 		Reset();
 		SpawnSnake();
 	}
@@ -275,7 +305,7 @@ namespace Player
 
 	std::vector<sf::Vector2i> SnakeController::GetCurrentSnakePositionList()
 	{
-		return singleLinkedList->GetNodePositionList();;
+		return linkedList->GetNodesPositionList();;
 	}
 
 	int SnakeController::GetPlayerScore()

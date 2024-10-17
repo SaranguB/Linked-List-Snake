@@ -2,7 +2,7 @@
 #include "Obstacle.h"
 #include <vector>
 #include <Element/ElementData.h>
-#include "../LinkedList/Node.h"
+#include "../LinkedListLib/SingleLinked/SingleNode.h"
 
 namespace Element
 {
@@ -26,7 +26,7 @@ namespace Element
 
 		std::vector<sf::Vector2i> GetElementPositionList();
 
-		bool ProcessElementCollision(LinkedList::Node* headNode);
+		bool ProcessElementCollision(LinkedListLib::Node* headNode);
 
 	};
 }

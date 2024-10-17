@@ -133,11 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\LinkedListLib\LinkedList.cpp" />
     <ClCompile Include="source\Food\FoodService.cpp" />
     <ClCompile Include="source\Food\FoodItem.cpp" />
     <ClCompile Include="source\Element\ElementService.cpp" />
     <ClCompile Include="source\Element\Obstacle.cpp" />
-    <ClCompile Include="source\LinkedList\SingleLinkedList.cpp" />
+    <ClCompile Include="source\LinkedListLib\DoubleLinkedList\DoubleLinkedList.cpp" />
+    <ClCompile Include="source\LinkedListLib\SingleList\SingleLinkedList.cpp" />
     <ClCompile Include="source\Player\BodyPart.cpp" />
     <ClCompile Include="source\Player\PlayerService.cpp" />
     <ClCompile Include="source\Player\SnakeController.cpp" />
@@ -151,6 +153,7 @@
     <ClCompile Include="source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="source\UI\Instructions\InstructionsScreenUIController.cpp" />
     <ClCompile Include="source\UI\LevelSelection\LevelSelectionUIController.cpp" />
+    <ClCompile Include="source\UI\LinkedListUI\LinkedListSelectionUIController.cpp" />
     <ClCompile Include="source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="source\Global\Config.cpp" />
@@ -177,13 +180,17 @@
     <ClInclude Include="Include\Level\LevelController.h" />
     <ClInclude Include="Include\Level\LevelData.h" />
     <ClInclude Include="Include\Level\LevelModel.h" />
-    <ClInclude Include="Include\Level\LevelNumber.h" />
+    <ClInclude Include="Include\Level\LevelConfig.h" />
     <ClInclude Include="Include\Level\LevelService.h" />
     <ClInclude Include="Include\Level\LevelView.h" />
-    <ClInclude Include="Include\LinkedList\SingleLinkedList.h" />
+    <ClInclude Include="Include\LinkedListLib\DoubleLinked\DoubleLinkedList.h" />
+    <ClInclude Include="Include\LinkedListLib\DoubleLinked\DoubleNode.h" />
+    <ClInclude Include="Include\LinkedListLib\LinkedList.h" />
+    <ClInclude Include="Include\LinkedListLib\Node.h" />
+    <ClInclude Include="Include\LinkedListLib\SingleLinked\SingleLinkedList.h" />
     <ClInclude Include="Include\Player\BodyPart.h" />
     <ClInclude Include="Include\Player\Direction.h" />
-    <ClInclude Include="Include\LinkedList\Node.h" />
+    <ClInclude Include="Include\LinkedListLib\SingleLinked\SingleNode.h" />
     <ClInclude Include="Include\Player\PlayerService.h" />
     <ClInclude Include="Include\Player\SnakeController.h" />
     <ClInclude Include="include\Time\TimeService.h" />
@@ -191,6 +198,7 @@
     <ClInclude Include="Include\UI\GameplayUI\GameplayUIController.h" />
     <ClInclude Include="include\UI\Instructions\InstructionsScreenUIController.h" />
     <ClInclude Include="Include\UI\LevelSelection\LevelSelectionUIController.h" />
+    <ClInclude Include="Include\UI\LinkedListUI\LinkedListUIController.h" />
     <ClInclude Include="include\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="include\UI\UIElement\ButtonView.h" />
     <ClInclude Include="include\Global\Config.h" />

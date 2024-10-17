@@ -7,7 +7,7 @@ namespace Food
 {
 	using namespace Global;
 	using namespace Level;
-	using namespace LinkedList;
+	using namespace LinkedListLib;
 
 	FoodService::FoodService() : randomEngine(randomDevice())
 	{
@@ -51,6 +51,7 @@ namespace Food
 	
 	void FoodService::HandleFoodSpawning()
 	{
+		if (ServiceLocator::getInstance()->GetPlayerService()->IsPlayerDead())return;
 		if (elapsedDuration >= spawnDuration)
 		{
 			DestroyFood();

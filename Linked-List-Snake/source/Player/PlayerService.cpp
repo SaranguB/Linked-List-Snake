@@ -3,6 +3,7 @@
 
 namespace Player
 {
+	using namespace Level;
 
 	PlayerService::PlayerService()
 	{
@@ -36,9 +37,14 @@ namespace Player
 		snakeController->Render();
 	}
 
-	void PlayerService::SpawnPlayer()
+	void PlayerService::SpawnPlayer(LinkedListType levelType)
 	{
+		
+
+		snakeController->CreateLinkedList(levelType);
+
 		snakeController->SpawnSnake();
+
 	}
 	std::vector<sf::Vector2i> PlayerService::GetCurrentSnakePositionList()
 	{
@@ -55,6 +61,10 @@ namespace Player
 	LinkedListOperations PlayerService::GetLastOperation()
 	{
 		return snakeController->GetLastOperation();;
+	}
+	bool PlayerService::IsPlayerDead()
+	{
+		return snakeController->IsSnakeDead();
 	}
 }
 

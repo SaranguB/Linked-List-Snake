@@ -63,7 +63,7 @@ namespace Element
 		obstacleList.push_back(obstacle);
 	}
 
-	bool ElementService::ProcessElementCollision(LinkedList::Node* headNode)
+	bool ElementService::ProcessElementCollision(LinkedListLib::Node* headNode)
 	{
 
 		for (int i = 0;i < obstacleList.size();i++)
