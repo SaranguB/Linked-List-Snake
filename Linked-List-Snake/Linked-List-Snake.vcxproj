@@ -153,6 +153,7 @@
     <ClCompile Include="source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="source\UI\Instructions\InstructionsScreenUIController.cpp" />
     <ClCompile Include="source\UI\LevelSelection\LevelSelectionUIController.cpp" />
+    <ClCompile Include="source\UI\LinkedListUI\LinkedListSelectionUIController.cpp" />
     <ClCompile Include="source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="source\Global\Config.cpp" />
@@ -179,7 +180,7 @@
     <ClInclude Include="Include\Level\LevelController.h" />
     <ClInclude Include="Include\Level\LevelData.h" />
     <ClInclude Include="Include\Level\LevelModel.h" />
-    <ClInclude Include="Include\Level\LevelNumber.h" />
+    <ClInclude Include="Include\Level\LevelConfig.h" />
     <ClInclude Include="Include\Level\LevelService.h" />
     <ClInclude Include="Include\Level\LevelView.h" />
     <ClInclude Include="Include\LinkedListLib\DoubleLinked\DoubleLinkedList.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Include\UI\GameplayUI\GameplayUIController.h" />
     <ClInclude Include="include\UI\Instructions\InstructionsScreenUIController.h" />
     <ClInclude Include="Include\UI\LevelSelection\LevelSelectionUIController.h" />
+    <ClInclude Include="Include\UI\LinkedListUI\LinkedListUIController.h" />
     <ClInclude Include="include\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="include\UI\UIElement\ButtonView.h" />
     <ClInclude Include="include\Global\Config.h" />
