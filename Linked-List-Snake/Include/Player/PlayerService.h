@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/System/Vector2.hpp>
 #include "SnakeController.h"
+#include "Level/LevelConfig.h"
 
 namespace Player
 {
@@ -21,7 +22,7 @@ namespace Player
 		void Update();
 		void Render();
 
-		void SpawnPlayer();
+		void SpawnPlayer(Level::LinkedListType levelType);
 
 		std::vector<sf::Vector2i> GetCurrentSnakePositionList();
 

@@ -1,9 +1,10 @@
 	#pragma once
 #include <SFML/System/Vector2.hpp>
 #include "Direction.h"
-#include"../LinkedListLib/SingleLinked/SingleLinkedList.h"
+#include"../LinkedListLib/LinkedList.h"
 #include <vector>
 #include "../../Include/Food/FoodService.h"
+#include "Level/LevelConfig.h"
 
 namespace Player
 {
@@ -42,8 +43,7 @@ namespace Player
 	class SnakeController
 	{
 	private:
-		LinkedList::SingleLinkedList* singleLinkedList;
-		void CreateLinkedList();
+		LinkedListLib::LinkedList* linkedList;
 
 		int playerScore = 0;
 
@@ -92,6 +92,8 @@ namespace Player
 		void DelayedUpdate();
 		void SpawnSnake();
 
+		void InitializeLinkedList();
+
 		void SetSnakeState(SnakeState state);
 		SnakeState GetSnakeState();
 
@@ -101,6 +103,9 @@ namespace Player
 
 		TimeComplexity GetTimeComplexity();
 		LinkedListOperations GetLastOperation();
+
+		void CreateLinkedList(Level::LinkedListType levelType);
+
 
 	};
 

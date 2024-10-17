@@ -81,16 +81,16 @@ namespace UI
 
         void LinkedListSelectionUIController::singleLinkedListButtonCallback()
         {
-           /* ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             GameService::setGameState(GameState::GAMEPLAY);
-            ServiceLocator::getInstance()->GetlevelService()->createLevel(LinkedListType::SINGLE_LINKED_LIST);*/
+            ServiceLocator::getInstance()->GetlevelService()->CreateLevel(LinkedListType::SINGLE_LINKED_LIST);
         }
 
         void LinkedListSelectionUIController::doubleLinkedListButtonCallback()
         {
-           /* ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
             GameService::setGameState(GameState::GAMEPLAY);
-            ServiceLocator::getInstance()->getLevelService()->createLevel(LinkedListType::DOUBLE_LINKED_LIST);*/
+            ServiceLocator::getInstance()->GetlevelService()->CreateLevel(LinkedListType::DOUBLE_LINKED_LIST);
         }
 
         void LinkedListSelectionUIController::menuButtonCallback()
